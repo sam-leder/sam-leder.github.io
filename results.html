@@ -1,0 +1,32 @@
+<!-- results.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+</head>
+
+<body>
+  <h1>Quiz Results</h1>
+  <div id="results"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const resultsDiv = document.getElementById('results');
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+
+      const userResponses = urlParams.get('user').split(',');
+      const benchmarkScores = urlParams.get('scores').split(',');
+
+      resultsDiv.innerHTML = `<p>Your responses: ${userResponses.join(', ')}</p>`;
+      benchmarkScores.forEach((score, index) => {
+        resultsDiv.innerHTML += `<p>${benchmarkPeople[index].name}'s score: ${score}%</p>`;
+      });
+    });
+  </script>
+</body>
+
+</html>
