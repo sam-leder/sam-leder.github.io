@@ -5,7 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stemwijzer Results</title>
+  
+  <title></title>
+  
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -29,11 +31,11 @@
 
       // Display the title
       const title = document.createElement('h2');
-      title.textContent = 'Quiz Results';
+      title.textContent = 'Stemwijzer Results';
       resultsDiv.appendChild(title);
 
       // Display user responses
-      resultsDiv.innerHTML += `<p>Your responses: ${userResponses.join(', ')}</p>`;
+      // resultsDiv.innerHTML += `<p>Your responses: ${userResponses.join(', ')}</p>`;
 
       // Display benchmark scores as a list
       const resultsList = document.createElement('ul');
