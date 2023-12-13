@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Calculate percentages
     const totalQuestions = questions.length;
     const percentages = benchmarkSchemes.map((_, benchmarkIndex) => {
-      return ((userScore[benchmarkIndex] / totalQuestions) * 100).toFixed(2);
+      return Math.round((userScore[benchmarkIndex] / totalQuestions) * 100);
     });
 
     // Redirect to results.html with query parameters
