@@ -68,19 +68,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return score;
       }, 0);
 
-      const scoreMessage = benchmarkScore === questions.length
-        ? `${benchmarkScheme.name} agrees with you on all questions!`
-        : `${benchmarkScheme.name}'s score: ${benchmarkScore}/${questions.length}`;
-
-      alert(`${scoreMessage}\n\n${benchmarkScheme.name}'s responses: ${benchmarkScheme.answers.join(', ')}`);
       return benchmarkScore;
     });
 
-    const userScoreMessage = userScore.every(score => score === questions.length)
-      ? 'You agree with all benchmark people on all questions!'
-      : `Your score: ${userScore.join(', ')}`;
+    // Calculate percentages
+    const totalQuestions = questions.length;
+    const percentages = benchmarkPeople.map((_, benchmarkIndex) => {
+      return ((userScore[benchmarkIndex] / totalQuestions) * 100).toFixed(2);
+    });
 
-    alert(`${userScoreMessage}\n\nYour responses: ${userResponses.join(', ')}`);
+    // Redirect to results.html with query parameters
+    const queryString = `?user=${userResponses.join(',')}&scores=${percentages.join(',')}`;
+    window.location.href = `results.html${queryString}`;
   });
 
   app.appendChild(submitButton);
