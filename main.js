@@ -30,6 +30,11 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   ];
 
+  // Display the title
+  const title = document.createElement('h2');
+  title.textContent = 'Quiz Results';
+  resultsDiv.appendChild(title);
+
   questions.forEach((question, index) => {
     const questionElement = document.createElement('div');
     questionElement.innerHTML = `<p>${question.text}</p>`;
