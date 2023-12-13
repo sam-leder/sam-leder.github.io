@@ -14,7 +14,28 @@
   <div id="results"></div>
 
   <script src="questions.js"></script>
-  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const resultsDiv = document.getElementById('results');
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+
+      const userResponses = urlParams.get('user').split(',');
+      const benchmarkScores = urlParams.get('scores').split(',');
+
+      resultsDiv.innerHTML = `<p>Your responses: ${userResponses.join(', ')}</p>`;
+      
+      const resultsList = document.createElement('ul');
+
+      benchmarkScores.forEach((score, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${benchmarkSchemes[index].name}'s score: ${score}%`;
+        resultsList.appendChild(listItem);
+      });
+
+      resultsDiv.appendChild(resultsList);
+    });
+  </script>
 </body>
 
 </html>
