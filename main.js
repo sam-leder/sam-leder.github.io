@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Calculate percentages
     const totalQuestions = questions.length;
-    const percentages = benchmarkPeople.map((_, benchmarkIndex) => {
+    const percentages = benchmarkSchemes.map((_, benchmarkIndex) => {
       return ((userScore[benchmarkIndex] / totalQuestions) * 100).toFixed(2);
     });
 
