@@ -21,7 +21,7 @@
       const userResponses = urlParams.get('user').split(',');
       const benchmarkScores = urlParams.get('scores').split(',');
 
-      resultsDiv.innerHTML = `<p>Your responses: ${userResponses.join(', ')}</p>`;
+      // resultsDiv.innerHTML = `<p>Your responses: ${userResponses.join(', ')}</p>`;
       benchmarkScores.forEach((score, index) => {
         resultsDiv.innerHTML += `<p>${benchmarkScheme[index].name}'s score: ${score}%</p>`;
       });
