@@ -1,7 +1,16 @@
 // main.js
 document.addEventListener('DOMContentLoaded', function () {
-    const app = document.getElementById('app');
-  
+  const app = document.getElementById('app');
+
+  // Load questions.js
+  const scriptQuestions = document.createElement('script');
+  scriptQuestions.src = 'questions.js';
+  scriptQuestions.onload = function () {
+    initializeQuiz();
+  };
+  app.appendChild(scriptQuestions);
+
+  function initializeQuiz() {
     const submitButton = document.createElement('button');
     submitButton.textContent = 'Submit';
     submitButton.addEventListener('click', function () {
@@ -17,21 +26,21 @@ document.addEventListener('DOMContentLoaded', function () {
           }
           return score;
         }, 0);
-  
+
         return benchmarkScore;
       });
-  
+
       // Calculate percentages
       const totalQuestions = questions.length;
       const percentages = benchmarkSchemes.map((_, benchmarkIndex) => {
         return ((userScore[benchmarkIndex] / totalQuestions) * 100).toFixed(2);
       });
-  
+
       // Redirect to results.html with query parameters
       const queryString = `?user=${userResponses.join(',')}&scores=${percentages.join(',')}`;
       window.location.href = `results.html${queryString}`;
     });
-  
+
     app.appendChild(submitButton);
-  });
-  
+  }
+});
