@@ -5,13 +5,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stemwijzer</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>PQChoiceAssistant</title>
+  <link rel="stylesheet" href="survey.css">
 </head>
 
-<body>
-  <div id="app"></div>
-  <script src="main.js"></script>
-</body>
 
+<body>
+    <header class="page-header">
+        <div class="myname"> 
+            <h2><a href="http://localhost:1313/"></a></h2> 
+        </div>
+        
+    <div class="navbar">
+        <a href="/">PQChoiceAssistant</a>
+        <a href="/kem">KEM</a>
+        <a href="/dss">DSS</a>
+    </div>
+
+    </header>
+
+
+<main>
+  
+    <div class="formbold-form-wrapper">
+        <img src="tno_logo.jpg" alt="TNO logo" width="300">
+  
+        <h2 id="welcome">Welcome</h2>
+        <br>
+        <p>Welcome to the <strong>PQChoiceAssistant!</strong></p>
+        <p>Here you can get advice on the feasibility of various post-quantum cryptographic algorithms.</p>
+        <p>We currently support Key Encapsulation Mechanism (KEM) and Digital Signature Scheme (DSS) algorithms.</p>
+
+        <br>
+        <p>Please choose one of the following options</p>
+        <p><a href="/kem/">KEM</a>
+        <a href="/dss/">DSS</a></p>
+
+        <form action="/kem.html">
+          <button class="formbold-btn">KEM</button>
+        </form>
+        
+        <form action="/dss.html">
+          <button class="formbold-btn">DSS</button>
+        </form>
+
+        <br>
+        <br>
+        <h2 id="about-pqchoiceassistant">About PQChoiceAssfistant</h2>
+        <p>The PQChoiceAssistant is a tool developed by TNO and (&hellip;partners&hellip;)</p>
+        <p>With the advent of quantum computers &hellip;</p>
+    </div>
+
+  
+  </main>
+
+  <footer>
+      <span></span>
+  </footer>
+
+  </body>
 </html>
