@@ -3,65 +3,67 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PQChoiceAssistant</title>
-  <link rel="stylesheet" href="survey.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQChoiceAssistant</title>
+    <link rel="stylesheet" href="survey.css">
 </head>
 
 
 <body>
     <header class="page-header">
-        <div class="myname"> 
+        <!-- <div class="myname"> 
             <h2><a href="http://localhost:1313/"></a></h2> 
-        </div>
+        </div> -->
         
-    <div class="navbar">
-        <a href="/">PQChoiceAssistant</a>
-        <a href="/kem">KEM</a>
-        <a href="/dss">DSS</a>
-    </div>
+        <div class="navbar">
+            <a href="/">PQChoiceAssistant</a>
+            <a href="/kem">KEM</a>
+            <a href="/dss">DSS</a>
+        </div>
 
     </header>
 
 
-<main>
-  
-    <div class="formbold-form-wrapper">
-        <img src="tno_logo.jpg" alt="TNO logo" width="300">
-  
-        <h2 id="welcome">Welcome</h2>
-        <br>
-        <p>Welcome to the <strong>PQChoiceAssistant!</strong></p>
-        <p>Here you can get advice on the feasibility of various post-quantum cryptographic algorithms.</p>
-        <p>We currently support Key Encapsulation Mechanism (KEM) and Digital Signature Scheme (DSS) algorithms.</p>
-
-        <br>
-        <p>Please choose one of the following options</p>
-        <p><a href="/kem">KEM</a>
-        <a href="/dss">DSS</a></p>
-
-        <form action="/kem.html">
-          <button class="formbold-btn">KEM</button>
-        </form>
+    <main>
+        <div class="main-wrapper"></div>
+            <div class="form-wrapper">
+                <img src="tno_logo.jpg" alt="TNO logo" width="300">
+                <img src="cwi_logo.jpg" alt="CWI logo" width="300">
         
-        <form action="/dss.html">
-          <button class="formbold-btn">DSS</button>
-        </form>
+                <h2 id="welcome">Welcome</h2>
+                <br>
+                <p>Welcome to the <strong>PQChoiceAssistant!</strong></p>
+                <p>Here you can get advice on the feasibility of various post-quantum cryptographic algorithms.</p>
+                <p>We currently support Key Encapsulation Mechanism (KEM) and Digital Signature Scheme (DSS) algorithms.</p>
 
-        <br>
-        <br>
-        <h2 id="about-pqchoiceassistant">About PQChoiceAssistant</h2>
-        <p>The PQChoiceAssistant is a tool developed by TNO and CWI, with the support of Fox Crypto, NXP, Technolution and Compumatica.</p>
-        <p>With the advent of quantum computers &hellip;</p>
-    </div>
+                <br>
+                <p>Please choose one of the following options</p>
+                <!-- <p><a href="/kem">KEM</a>
+                <a href="/dss">DSS</a></p> -->
 
-  
-  </main>
+                <div>
+                    <form action="/kem">
+                    <button class="big-btn">KEM</button>
+                    </form>
+                    
+                    <form action="/dss">
+                    <button class="big-btn">DSS</button>
+                    </form>
+                </div>
 
-  <footer>
-      <span></span>
-  </footer>
+                <br>
+                <br>
+                <h2 id="about-pqchoiceassistant">About PQChoiceAssistant</h2>
+                <p>The PQChoiceAssistant is a tool developed by TNO and CWI, with the support of Fox Crypto, NXP, Technolution and Compumatica.</p>
+                <p>With the advent of quantum computers &hellip;</p>
+            
+            </div>
+        </div>
+    </main>
 
-  </body>
-</html>
+    <!-- <footer>
+        <span></span>
+    </footer> -->
+
+</body>

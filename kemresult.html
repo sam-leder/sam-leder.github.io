@@ -1,3 +1,4 @@
+<!-- kemresult.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,30 +10,50 @@
 </head>
 
 <body>
+    
+    <header class="page-header">
 
-  <header class="page-header">
+        <div class="navbar">
+            <a href="/">PQChoiceAssistant</a>
+            <a href="/kem">KEM</a>
+            <a href="/dss">DSS</a>
+        </div>
+    
+    </header>
 
-    <div class="navbar">
-        <a href="/">PQChoiceAssistant</a>
-        <a href="/kem">KEM</a>
-        <a href="/dss">DSS</a>
-    </div>
+    <main>
+        <div class="main-wrapper">
+            <div class="form-wrapper" id="form-wrapper">
+                <img src="tno_logo.jpg" alt="TNO logo" width="300">
+                <img src="cwi_logo.jpg" alt="CWI logo" width="300">
 
-  </header>
+                <br>
+                <p><strong>Your results</strong></p>
+                <p>Your results will show up here</p>
+                <p>(...)</p>
+                <br>
 
+                <script>
+                    // Retrieve answers from sessionStorage
+                    const q0Answer = sessionStorage.getItem('q0');
+                    const q1Answer = sessionStorage.getItem('q1');
+                    const q2Answer = sessionStorage.getItem('q2');
+            
+                    // Display the results on the page
+                    const div = document.getElementById("form-wrapper");
+                    div.innerHTML += '<p>You answered as follows:</p>';
+                    div.innerHTML += '<p>Question 0: ' + (q0Answer ? q0Answer : 'Not answered') + '</p>';
+                    div.innerHTML += '<p>Question 1: ' + (q1Answer ? q1Answer : 'Not answered') + '</p>';
+                    div.innerHTML += '<p>Question 2: ' + (q2Answer ? q2Answer : 'Not answered') + '</p>';
+                    div.innerHTML += '<br>';
+                    div.innerHTML += '<p>The scores are now:</p>';
+                    div.innerHTML += '<p>...</p>';
+                </script>
+            
+
+                
+            
+            </div>
+        </div>
+    </main>
 </body>
-<div class="formbold-main-wrapper">
-    <!-- Author: FormBold Team -->
-    <!-- Learn More: https://formbold.com -->
-    <div class="formbold-form-wrapper">
-      <img src="tno_logo.jpg" alt="TNO logo" width="300">
-
-        <br>
-        <p><strong>Your results</strong></p>
-        <p>Your results will show up here</p>
-        <p>(...)</p>
-        <br>
-        
-      
-    </div>
-</div>

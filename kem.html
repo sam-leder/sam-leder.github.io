@@ -1,195 +1,230 @@
+<!-- kem.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PQChoiceAssistant</title>
-  <link rel="stylesheet" href="survey.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQChoiceAssistant</title>
+    <link rel="stylesheet" href="survey.css">
 </head>
 
+
 <body>
+    <header class="page-header">
 
-  <header class="page-header">
+        <div class="navbar">
+            <a href="/">PQChoiceAssistant</a>
+            <a href="/kem">KEM</a>
+            <a href="/dss">DSS</a>
+        </div>
+    
+    </header>
 
-    <div class="navbar">
-        <a href="/">PQChoiceAssistant</a>
-        <a href="/kem">KEM</a>
-        <a href="/dss">DSS</a>
-    </div>
+    <main>
+        <div class="main-wrapper">
+            <div class="form-wrapper">
 
-  </header>
+                <img src="tno_logo.jpg" alt="TNO logo" width="300">
+                <img src="cwi_logo.jpg" alt="CWI logo" width="300">
 
-</body>
-<div class="formbold-main-wrapper">
-    <!-- Author: FormBold Team -->
-    <!-- Learn More: https://formbold.com -->
-    <div class="formbold-form-wrapper">
-      <img src="tno_logo.jpg" alt="TNO logo" width="300">
+                <br>
+                <p><strong>Intro</strong></p>
+                <p>Please fill in the following questions.</p>
+                <p>If you are unsure, you can choose the "Don't know" option.</p>
+                <p>For advanced users with extensive cryptographic knowledge, an expert mode is available to get more finetuned results.</p>
+                <p>(...further instructions...)</p>
+                <br>
+                
+                
+                
+                <form id="kemform" onsubmit="return processForm()">
+                    
+                    <div id="form-container"></div>
+                    
+                    <input type="button" class="btn" value="See the results" onclick="processForm()">
+                </form>
+            </div>
+        </div>
 
-        <br>
-        <p><strong>Intro</strong></p>
-        <p>Please fill in the following questions.</p>
-        <p>If you are unsure, you can choose the "Don't know" option.</p>
-        <p>For advanced users with extensive cryptographic knowledge, an expert mode is available to get more finetuned results.</p>
-        <p>(...further instructions...)</p>
-        <br>
         
-      <form action="/kemresult.html">
-        <div class="formbold-input-group">
-          <label for="name" class="formbold-form-label"> Name </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Enter your name"
-            class="formbold-form-input"
-          />
-        </div>
-  
-        <div class="formbold-input-group">
-          <label for="age" class="formbold-form-label"> Age </label>
-          <input
-            type="text"
-            name="age"
-            id="age"
-            placeholder="Enter your age"
-            class="formbold-form-input"
-          />
-        </div>
-  
-        <div class="formbold-input-group">
-          <label class="formbold-form-label">
-            Which scheme do you currently use?
-          </label>
-  
-          <select class="formbold-form-select" name="occupation" id="occupation">
-            <option value="Student">RSA</option>
-            <option value="designer">ECC</option>
-            <option value="fullstack">Frodo</option>
-          </select>
-        </div>
-  
-        <div class="formbold-input-radio-wrapper">
-          <label for="ans" class="formbold-form-label">
-            Would you recomend our site to a friend?
-          </label>
-  
-          <div class="formbold-radio-flex">
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="ans"
-                  id="ans"
-                />
-                Yes
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="ans"
-                  id="ans"
-                />
-                No
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="ans"
-                  id="ans"
-                />
-                Maybe
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-          </div>
-        </div>
-  
-        <div class="formbold-input-radio-wrapper">
-          <label class="formbold-form-label">
-            Which languages do you use?
-          </label>
-  
-          <div class="formbold-radio-flex">
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="c">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="c"
-                  id="c"
-                />
-                C
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="c++">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="c++"
-                  id="c++"
-                />
-                c++
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="java">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="java"
-                  id="java"
-                />
-                Java
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="python">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="python"
-                  id="python"
-                />
-                Python
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-  
-        <div>
-          <label for="message" class="formbold-form-label">
-            Any comments or suggestions
-          </label>
-          <textarea
-            rows="6"
-            name="message"
-            id="message"
-            placeholder="Type here..."
-            class="formbold-form-input"
-          ></textarea>
-        </div>
-  
-        <button class="formbold-btn">Submit</button>
-      </form>
-    </div>
-  </div>
+
+        <script>
+            
+        const questions = [
+            {
+                type: 'radio',
+                name: 'q0',
+                prompt: 'My application is willing to trade performance for security.',
+                options: ['Completely disagree', 'Disagree', 'Neutral', 'Agree', 'Completely agree'],
+            },
+            {
+                type: 'checkbox',
+                name: 'q1',
+                prompt: 'Are you bound by standardization?',
+                options: ['NIST', 'ISO', 'IETF', 'Not sure'],
+            },
+            {
+                type: 'slider',
+                name: 'q2',
+                prompt: 'For how many years does the data that you are protecting have to stay confidential?',
+                options: [0, 30, 15],
+            },
+        ];
+        
+        
+        function displayQuestion(question) {
+
+            const outerDiv = document.createElement("div");
+            outerDiv.classList.add("question-wrapper");
+            const questionLabel = document.createElement("label");
+            questionLabel.classList.add("form-label");
+            questionLabel.textContent = question.prompt;
+            outerDiv.appendChild(questionLabel)
+
+            switch(question.type) {
+                
+                case "radio":
+                    const radioDiv = document.createElement("div");
+                    radioDiv.classList.add("question-flex");
+                    
+                    question.options.forEach((option, index) => {
+                        const answerLabel = document.createElement("label");
+                        answerLabel.classList.add("radio-label");
+                        answerLabel.htmlFor = `${question.name}a${index}`;
+                        
+                        const answerInput = document.createElement("input");
+                        answerInput.classList.add("input-radio");
+                        answerInput.type = "radio";
+                        answerInput.id = answerLabel.htmlFor;
+                        answerInput.name = question.name;
+                        answerInput.value = option;
+                        answerLabel.appendChild(answerInput);
+
+                        const answerSpan = document.createElement("span");
+                        answerSpan.textContent = option;
+                        answerLabel.appendChild(answerSpan);
+
+                        const answerCheckmark = document.createElement("span");
+                        answerCheckmark.classList.add("radio-checkmark");
+                        answerLabel.appendChild(answerCheckmark);
+                        
+                        radioDiv.appendChild(answerLabel);
+                    })
+
+                    outerDiv.appendChild(radioDiv);
+                    break;
+                
+                case "checkbox":
+                    const checkboxDiv = document.createElement("div");
+                    checkboxDiv.classList.add("question-flex");
+                    
+                    question.options.forEach((option, index) => {
+                        const answerLabel = document.createElement("label");
+                        answerLabel.classList.add("checkbox-label");
+                        answerLabel.htmlFor = `${question.name}a${index}`;
+                        
+                        const answerInput = document.createElement("input");
+                        answerInput.classList.add("input-checkbox");
+                        answerInput.type = "checkbox";
+                        answerInput.id = answerLabel.htmlFor;
+                        answerInput.name = `${question.name}[]`;
+                        answerInput.value = option;
+                        answerLabel.appendChild(answerInput);
+
+                        const answerSpan = document.createElement("span");
+                        answerSpan.textContent = option;
+                        answerLabel.appendChild(answerSpan);
+
+                        const answerCheckmark = document.createElement("span");
+                        answerCheckmark.classList.add("checkbox-checkmark");
+                        answerLabel.appendChild(answerCheckmark);
+                        
+                        checkboxDiv.appendChild(answerLabel);
+                    })
+
+                    outerDiv.appendChild(checkboxDiv);
+                    break;
+                
+                case "slider":
+                    const sliderDiv = document.createElement("div");
+                    sliderDiv.classList.add("question-flex");
+
+                    const sliderInput = document.createElement("input");
+                    sliderInput.classList.add("slider");
+                    sliderInput.type = "range";
+                    sliderInput.min = question.options[0];
+                    sliderInput.max = question.options[1];
+                    sliderInput.value = question.options[2];
+                    sliderInput.id = `${question.name}a`;
+                    sliderInput.name = question.name;
+                    sliderDiv.appendChild(sliderInput);
+
+                    const sliderP = document.createElement("p");
+                    sliderP.textContent = "Answer: "
+                    const sliderSpan = document.createElement("span");
+                    sliderSpan.id = `${question.name}s`;
+                    sliderSpan.value = sliderInput.value;
+                    sliderP.appendChild(sliderSpan);
+                    sliderDiv.appendChild(sliderP);
+
+                    sliderInput.oninput = function() {
+                        sliderSpan.textContent = this.value;
+                    }
+
+                    outerDiv.appendChild(sliderDiv);
+                    break;
+            }
+
+            container.appendChild(outerDiv);
+            return 0;
+        }
+
+        const container = document.getElementById("form-container");
+        questions.forEach(question => displayQuestion(question));
+
+        </script>
+
+
+
+
+
+        <script>
+            function processForm() {
+
+
+                var form = document.getElementById('kemform');
+
+                console.log(form.elements)
+
+                var q0 = form.elements['q0'].value;
+
+                var q1 = [];
+                var checkboxesQ1 = form.elements['q1[]'];
+                for (var i = 0; i < checkboxesQ1.length; i++) {
+                    if (checkboxesQ1[i].checked) {
+                        q1.push(checkboxesQ1[i].value);
+                    }
+                }
+
+                var q2 = form.elements['q2'].value;
+
+                console.log(q0);
+                console.log(q1);
+                console.log(q2);
+
+                // Store answers in sessionStorage
+                sessionStorage.setItem('q0', q0);
+                sessionStorage.setItem('q1', q1);
+                sessionStorage.setItem('q2', q2);
+
+                // Redirect to kemresult.html
+                window.location.href = 'kemresult.html';
+
+                // Prevent the form from submitting
+                return false;
+            }
+        </script>
+    
+    </main>
+</body>
