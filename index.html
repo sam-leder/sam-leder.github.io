@@ -12,9 +12,6 @@
 
 <body>
     <header class="page-header">
-        <!-- <div class="myname"> 
-            <h2><a href="http://localhost:1313/"></a></h2> 
-        </div> -->
         
         <div class="navbar">
             <a href="/">PQChoiceAssistant</a>
@@ -26,44 +23,51 @@
 
 
     <main>
-        <div class="main-wrapper"></div>
+        <div class="main-wrapper">
             <div class="form-wrapper">
-                <img src="tno_logo.jpg" alt="TNO logo" width="300">
-                <img src="cwi_logo.jpg" alt="CWI logo" width="300">
         
-                <h2 id="welcome">Welcome</h2>
+                <h2>Welcome</h2>
                 <br>
                 <p>Welcome to the <strong>PQChoiceAssistant!</strong></p>
                 <p>Here you can get advice on the feasibility of various post-quantum cryptographic algorithms.</p>
                 <p>We currently support Key Encapsulation Mechanism (KEM) and Digital Signature Scheme (DSS) algorithms.</p>
+                <p>By answering relevant questions about your situation, 
+                    you are able to see recommendations on the most well-suited option.</p>
 
                 <br>
-                <p>Please choose one of the following options</p>
-                <!-- <p><a href="/kem">KEM</a>
-                <a href="/dss">DSS</a></p> -->
+                <p>Please choose one of the following options:</p>
 
                 <div>
-                    <form action="/kem">
-                    <button class="big-btn">KEM</button>
-                    </form>
+                    <a href="/kem" class="big-btn">KEM</a>
                     
-                    <form action="/dss">
-                    <button class="big-btn">DSS</button>
-                    </form>
+                    <a href="/dss" class="big-btn">DSS</a>
                 </div>
 
                 <br>
                 <br>
                 <h2 id="about-pqchoiceassistant">About PQChoiceAssistant</h2>
-                <p>The PQChoiceAssistant is a tool developed by TNO and CWI, with the support of Fox Crypto, NXP, Technolution and Compumatica.</p>
-                <p>With the advent of quantum computers &hellip;</p>
+                <br>
+                <p>The PQChoiceAssistant is a tool developed by TNO and CWI, 
+                    with the support of Fox Crypto, NXP, Technolution and Compumatica.</p>
+                <br>
+                <p>With the advent of quantum computers, encryption methods have to change.
+                    Popular options such as RSA are not quantum-safe, and so many users will have to migrate to other schemes
+                    that do protect against the quantum threat. However, it is not always easy to determine what scheme to choose,
+                    as there are multiple options with different strengths and weaknesses relevant to specific applications.</p>
+                <br>
+                <p>All information entered in the PQChoiceAssistant is handled locally and all calculations are done in the browser, 
+                    so no information is stored or viewed by other parties.</p>
+                <p>For this reason, the tool can also be used offline. You can easily download the website from
+                    <a href="github.com">Github</a> [link TBD].</p>
+
+                <div class="image-container">
+                    <img src="tno_logo.jpg" alt="TNO logo" width="250">
+                    <img src="cwi_logo.jpg" alt="CWI logo" width="250">
+                </div>
+
             
             </div>
         </div>
     </main>
-
-    <!-- <footer>
-        <span></span>
-    </footer> -->
 
 </body>

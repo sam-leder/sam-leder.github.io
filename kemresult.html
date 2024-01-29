@@ -3,14 +3,14 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PQChoiceAssistant</title>
-  <link rel="stylesheet" href="survey.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQChoiceAssistant</title>
+    <link rel="stylesheet" href="survey.css">
 </head>
 
+
 <body>
-    
     <header class="page-header">
 
         <div class="navbar">
@@ -21,37 +21,52 @@
     
     </header>
 
+
     <main>
         <div class="main-wrapper">
             <div class="form-wrapper" id="form-wrapper">
-                <img src="tno_logo.jpg" alt="TNO logo" width="300">
-                <img src="cwi_logo.jpg" alt="CWI logo" width="300">
+
+                <h2>Your results</h2>
+                <br>
+                <p>Below you can see and review your answers. After that, a score on the scale 0-100 is displayed for each of the 
+                    candidate schemes along with a description of the schemes.
+                    Below that, an explanation of the scoring method is also available.</p>
+                <br>
+
+                <script src="calculateScores.js"></script>
 
                 <br>
-                <p><strong>Your results</strong></p>
-                <p>Your results will show up here</p>
-                <p>(...)</p>
+                <p>Kyber is a key encapsulation mechanism (KEM) designed to be resistant to cryptanalytic attacks with future powerful 
+                    quantum computers. It is used to establish a shared secret between two communicating parties without an (IND-CCA2) 
+                    attacker in the transmission system being able to decrypt it. This asymmetric cryptosystem uses a variant of the 
+                    learning with errors lattice problem as its basic trapdoor function. It won the NIST competition for the first 
+                    post-quantum cryptography (PQ) standard.</p>
                 <br>
+                <p>FrodoKEM is a family of key-encapsulation mechanisms that are designed to be conservative yet practical post-quantum 
+                    constructions whose security derives from cautious parameterizations of the well-studied learning with errors problem, 
+                    which in turn has close connections to conjectured-hard problems on generic, algebraically unstructured lattices.</p>
+                <br>
+                <p>McEliece is an asymmetric encryption algorithm developed in 1978 by Robert McEliece. It was the first such scheme to 
+                    use randomization in the encryption process. The algorithm has never gained much acceptance in the cryptographic 
+                    community, but is a candidate for "post-quantum cryptography", as it is immune to attacks using Shor's algorithm 
+                    and - more generally - measuring coset states using Fourier sampling.
+                    The algorithm is based on the hardness of decoding a general linear code (which is known to be NP-hard). 
+                    <!-- For a description of the private key, an error-correcting code is selected for which an efficient decoding algorithm 
+                    is known, and which is able to correct t errors. The original algorithm uses binary Goppa codes 
+                    (subfield codes of algebraic geometry codes of a genus-0 curve over finite fields of characteristic 2); 
+                    these codes can be efficiently decoded, thanks to an algorithm due to Patterson. 
+                    The public key is derived from the private key by disguising the selected code as a general linear code. -->
+                </p>
 
-                <script>
-                    // Retrieve answers from sessionStorage
-                    const q0Answer = sessionStorage.getItem('q0');
-                    const q1Answer = sessionStorage.getItem('q1');
-                    const q2Answer = sessionStorage.getItem('q2');
-            
-                    // Display the results on the page
-                    const div = document.getElementById("form-wrapper");
-                    div.innerHTML += '<p>You answered as follows:</p>';
-                    div.innerHTML += '<p>Question 0: ' + (q0Answer ? q0Answer : 'Not answered') + '</p>';
-                    div.innerHTML += '<p>Question 1: ' + (q1Answer ? q1Answer : 'Not answered') + '</p>';
-                    div.innerHTML += '<p>Question 2: ' + (q2Answer ? q2Answer : 'Not answered') + '</p>';
-                    div.innerHTML += '<br>';
-                    div.innerHTML += '<p>The scores are now:</p>';
-                    div.innerHTML += '<p>...</p>';
-                </script>
-            
-
+                <br>
+                <h4>Scoring system</h4>
+                <p>The schemes are scored as follows. For every question, </p>
                 
+                <div class="image-container">
+                    <img src="tno_logo.jpg" alt="TNO logo" width="250">
+                    <img src="cwi_logo.jpg" alt="CWI logo" width="250">
+                </div>
+            
             
             </div>
         </div>

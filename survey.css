@@ -13,7 +13,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px;
+  padding: 100px;
 }
 
 .form-wrapper {
@@ -169,6 +169,7 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 .navbar a {
@@ -194,6 +195,7 @@ body {
 }
 
 .big-btn {
+  text-decoration: none;
   text-align: center;
   width: 40%;
   font-size: 24px;
@@ -201,7 +203,7 @@ body {
   padding: 50px 25px;
   border: none;
   font-weight: 750;
-  background-color: #097292;
+  background-color: #04876b;
   color: white;
   cursor: pointer;
   margin-top: 25px;
@@ -287,4 +289,15 @@ body {
   height: 15px;
   background: #133cb6;
   cursor: pointer;
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-between; /* Adjust as needed */
+  align-items: center; /* Align images vertically in the center */
+}
+
+.image-container img {
+  max-width: 100%; /* Ensure images don't exceed their container */
+  height: auto; /* Maintain aspect ratio */
 }
