@@ -301,3 +301,34 @@ body {
   max-width: 100%; /* Ensure images don't exceed their container */
   height: auto; /* Maintain aspect ratio */
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted #133cb6;
+  cursor: help;
+  background-color: #e7e9f3;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #133cb6;
+  color: #e7e9f3;
+  text-align: center;
+  border-radius: 3px;
+  padding: 5px 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 0%;
+  margin-left: 0px;
+  width: 200px;
+  border: solid 2px #a6abbd;
+  font-size: 0.75em;
+  line-height: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

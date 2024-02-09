@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PQChoiceAssistant</title>
-    <link rel="stylesheet" href="survey.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 
@@ -32,14 +32,18 @@
                 <!-- <p>If you are unsure, you can choose the "Don't know" option.</p> -->
                 <p>For advanced users with extensive cryptographic knowledge, 
                     an expert mode is available to get more finetuned results. [TBD]</p>
+                <p>Most questions are also accompanied by a brief introduction illustrating the idea behind the question.</p>
                 <br>
+                For some questions, a <div class="tooltip">tooltip<span class="tooltiptext">Tooltips look like this and contain additional information</span></div> is available.
+                You can hover over them to see additional information.
+                <br><br>
                 <p>We consider three candidate Key Encapsulation Mechanisms: <strong>Kyber</strong>, 
                     <strong>FrodoKEM</strong> and <strong>McEliece</strong>. 
                     A detailed description of these can be found along with the results of the questionnaire on the next page.</p>
                 <br><br><br>
                 
-                <script src="displayQuestion.js" type="module"></script>
-                <script src="processForm.js"></script>
+                <script src="javascript/displayQuestion.js" type="module"></script>
+                <script src="javascript/processForm.js"></script>
                                 
                 <form id="kemform" onsubmit="return processForm()">
                     
@@ -49,8 +53,8 @@
                 </form>
 
                 <div class="image-container">
-                    <img src="tno_logo.jpg" alt="TNO logo" width="250">
-                    <img src="cwi_logo.jpg" alt="CWI logo" width="250">
+                    <img src="images/tno_logo.jpg" alt="TNO logo" width="250">
+                    <img src="images/cwi_logo.jpg" alt="CWI logo" width="250">
                 </div>
             
             </div>

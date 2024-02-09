@@ -7,7 +7,18 @@ function displayQuestion(question) {
     outerDiv.classList.add("question-wrapper");
     const questionLabel = document.createElement("label");
     questionLabel.classList.add("form-label");
-    questionLabel.innerHTML = `<strong>Question ${Number(question.name.slice(1)) + 1}:</strong> ` + question.prompt;
+    questionLabel.innerHTML = `<br><p>${question.intro}</p> <br> <strong>Question ${Number(question.name.slice(1)) + 1}:</strong> `;
+    if (question.tooltip) {
+        let term = question.tooltip[0];
+        let explanation = question.tooltip[1];
+        let startIndex = question.prompt.indexOf(term);
+        let endIndex = startIndex + term.length;
+        questionLabel.innerHTML += question.prompt.slice(0, startIndex)
+                                + `<div class="tooltip">${term}<span class="tooltiptext">${explanation}</span></div>`
+                                + question.prompt.slice(endIndex);
+    } else {
+        questionLabel.innerHTML += question.prompt;
+    }
     outerDiv.appendChild(questionLabel)
 
     switch(question.type) {
