@@ -18,7 +18,7 @@
             <a href="/kem">KEM</a>
             <a href="/dss">DSS</a>
         </div>
-    
+
     </header>
 
 
@@ -26,29 +26,31 @@
         <div class="main-wrapper">
             <div class="form-wrapper">
 
-                <h2>Questionnaire</h2>
+                <h2>KEM Choice Assistant</h2>
                 <br>
                 <p>Please answer the following questions.</p>
-                <!-- <p>If you are unsure, you can choose the "Don't know" option.</p> -->
-                <p>For advanced users with extensive cryptographic knowledge, 
-                    an expert mode is available to get more finetuned results. [TBD]</p>
+                <p>For advanced users with extensive cryptographic knowledge,
+                    expert questions are available to get more finetuned results.
+                    You are free to skip these questions if you are not sure. Note that expert
+                    questions replace the scoring of the corresponding regular question, e.g. when
+                    answering expert question 5-1, the answer to question 5 will be disregarded.</p>
                 <p>Most questions are also accompanied by a brief introduction illustrating the idea behind the question.</p>
                 <br>
                 For some questions, a <div class="tooltip">tooltip<span class="tooltiptext">Tooltips look like this and contain additional information</span></div> is available.
                 You can hover over them to see additional information.
                 <br><br>
-                <p>We consider three candidate Key Encapsulation Mechanisms: <strong>Kyber</strong>, 
-                    <strong>FrodoKEM</strong> and <strong>McEliece</strong>. 
+                <p>We consider three candidate Key Encapsulation Mechanisms: <strong>Kyber</strong>,
+                    <strong>FrodoKEM</strong> and <strong>McEliece</strong>.
                     A detailed description of these can be found along with the results of the questionnaire on the next page.</p>
                 <br><br><br>
-                
-                <script src="javascript/displayQuestion.js" type="module"></script>
-                <script src="javascript/processForm.js"></script>
-                                
+
+                <script src="javascript/kemDisplayQuestion.js" type="module"></script>
+                <script src="javascript/kemProcessForm.js"></script>
+
                 <form id="kemform" onsubmit="return processForm()">
-                    
+
                     <div id="form-container"></div>
-                    
+
                     <input type="button" class="btn" value="See the results" onclick="processForm()">
                 </form>
 
@@ -56,8 +58,8 @@
                     <img src="images/tno_logo.jpg" alt="TNO logo" width="250">
                     <img src="images/cwi_logo.jpg" alt="CWI logo" width="250">
                 </div>
-            
+
             </div>
-        </div>    
+        </div>
     </main>
 </body>
