@@ -727,6 +727,8 @@ function calculateScores() {
     let frodokemScore = 0;
     let mcelieceScore = 0;
 
+    let maxScore = 35;
+
     // Question 1
     chosen = question1()
 
@@ -735,6 +737,7 @@ function calculateScores() {
     let factor = 1;
     if (sessionStorage.getItem('q9').includes('Question 2: Timespan') || sessionStorage.getItem('q9').includes('Question 2 (Follow-up): Classified information')) {
         factor = 2;
+        maxScore += 5;
     }
     kyberScore += factor * scores2.kyber;
     frodokemScore += factor * scores2.frodokem;
@@ -745,6 +748,7 @@ function calculateScores() {
     factor = 1;
     if (sessionStorage.getItem('q9').includes('Question 3: Performance vs security') || sessionStorage.getItem('q9').includes('Question 3-1: Conservativeness vs efficiency') || sessionStorage.getItem('q9').includes('Question 3-2: Security level') || sessionStorage.getItem('q9').includes('Question 3-3: Hybrid mode')) {
         factor = 2;
+        maxScore += 5;
     }
     kyberScore += factor * scores3.kyber;
     frodokemScore += factor * scores3.frodokem;
@@ -755,6 +759,7 @@ function calculateScores() {
     factor = 1;
     if (sessionStorage.getItem('q9').includes('Question 4: Standardization')) {
         factor = 2;
+        maxScore += 5;
     }
     kyberScore += factor * scores4.kyber;
     frodokemScore += factor * scores4.frodokem;
@@ -765,6 +770,7 @@ function calculateScores() {
     factor = 1;
     if (sessionStorage.getItem('q9').includes('Question 5: Platform') || sessionStorage.getItem('q9').includes('Question 5-1: Hardware acceleration')) {
         factor = 2;
+        maxScore += 5;
     }
     kyberScore += factor * scores5.kyber;
     frodokemScore += factor * scores5.frodokem;
@@ -775,6 +781,7 @@ function calculateScores() {
     factor = 1;
     if (sessionStorage.getItem('q9').includes('Question 6: New hardware')) {
         factor = 2;
+        maxScore += 5;
     }
     kyberScore += factor * scores6.kyber;
     frodokemScore += factor * scores6.frodokem;
@@ -785,6 +792,7 @@ function calculateScores() {
     factor = 1;
     if (sessionStorage.getItem('q9').includes('Question 7: Space requirement') || sessionStorage.getItem('q9').includes('Question 7-1: Communication requirement') || sessionStorage.getItem('q9').includes('Question 7-2: Memory requirement') || sessionStorage.getItem('q9').includes('Question 7-3: Storage requirement')) {
         factor = 2;
+        maxScore += 5;
     }
     kyberScore += factor * scores7.kyber;
     frodokemScore += factor * scores7.frodokem;
@@ -795,6 +803,7 @@ function calculateScores() {
     factor = 1;
     if (sessionStorage.getItem('q9').includes('Question 8: Delay requirement') || sessionStorage.getItem('q9').includes('Question 8-1: Communication time') || sessionStorage.getItem('q9').includes('Question 8-2: Computation time')) {
         factor = 2;
+        maxScore += 5;
     }
     kyberScore += factor * scores8.kyber;
     frodokemScore += factor * scores8.frodokem;
@@ -802,7 +811,12 @@ function calculateScores() {
 
     //  Question 9 has been implemented with the factors above
 
-    let scores = {"Kyber": Math.round(kyberScore), "FrodoKEM": Math.round(frodokemScore), "McEliece": Math.round(mcelieceScore)};
+    // Normalise to range 0-100
+    kyberScore = Math.round(kyberScore / maxScore * 100);
+    frodokemScore = Math.round(frodokemScore / maxScore * 100);
+    mcelieceScore = Math.round(mcelieceScore / maxScore * 100);
+
+    let scores = {"Kyber": kyberScore, "FrodoKEM": frodokemScore, "McEliece": mcelieceScore};
     const sortedScores = Object.fromEntries(Object.entries(scores).sort(([, value1], [, value2]) => value2 - value1));
 
     return sortedScores;
