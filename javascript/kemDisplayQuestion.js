@@ -5,14 +5,14 @@ const questions = [
         name: 'q1',
         topic: 'Operations',
         intro: 'The characteristics of the various post-quantum cryptography algorithms vary per operations. For example, certain algorithms might be more efficient when it comes to signing while others will be faster during key generation. To give the best recommendation, it is important to know which operations will be predominantly used in your application. If all of them are equally important or you do not (yet) know which one will be used, the overall best performing algorithms will be selected.',
-        prompt: 'What cryptographic operations are the most important in your application?',
+        prompt: 'What cryptographic operations are the most important in your use-case?',
         options: ['Key generation', 'Encapsulation', 'Decapsulation', "Don't know"],
     },
     {
         type: 'slider',
         name: 'q2',
         topic: 'Timespan',
-        intro: 'If your organization is dealing with information that should remain secure or validated for an extended period of time, it might be beneficial to invest in a more robust post-quantum cryptographic scheme. This ensures that you minimize the chance of the scheme being vulnerable in the future and thus increasing the assurance that the data will remain secure or verified for its entire lifespan. If you do not know how long your data should stay secure, choose -1.',
+        intro: 'If your organization is dealing with information that should remain secure for an extended period of time, it might be beneficial to invest in a more robust post-quantum cryptographic scheme. This ensures that you minimize the chance of the scheme being vulnerable in the future and thus increasing the assurance that the data will remain secure for its entire lifespan. If you do not know how long your data should stay secure, choose -1.',
         prompt: 'For how many years does the data that you are protecting have to stay secure?',
         options: [-1, 30, -1, 'years'],
     },
@@ -29,14 +29,14 @@ const questions = [
         name: 'q3',
         topic: 'Performance vs security',
         intro: 'The design of the new post-quantum scheme is different from the classically used RSA and ECC. The designs are based on different mathematical problems. Some are very efficient, but considered less mature, while some others are considered more secure, but they pay the price in efficiency. It is important to evaluate the trade-off performance vs security when choosing the appropriate scheme',
-        prompt: 'In my application, I can afford to trade performance for security.',
+        prompt: 'In my use case, I can afford to trade performance for security.',
         options: ['Completely disagree', 'Disagree', 'Neutral', 'Agree', 'Completely agree'],
     },
     {
         type: 'radio',
         name: 'q3-1',
         topic: 'Conservativeness vs efficiency',
-        prompt: 'Is your application willing to opt for a conservative choice at the expense of efficiency?',
+        prompt: 'My use case is willing to opt for a conservative choice at the expense of efficiency.',
         options: ['Completely disagree', 'Disagree', 'Neutral', 'Agree', 'Completely agree'],
         tooltip: ['conservative', 'Approach that prioritizes security over efficiency. The design bases its security on well understood mathematical problems, trying to minimize the risk of introducing vulnerabilities'],
     },
@@ -59,7 +59,7 @@ const questions = [
         name: 'q3-3',
         topic: 'Hybrid mode',
         intro: 'In case you application cannot opt for the optimal security, you might consider the option of using post-quantum cryptography in hybrid mode: using classical and post-quantum cryptography together. The advantage of using hybrid cryptography is that the security remains guaranteed as long as one of the two scheme is secure, and it aids backward-compatibility.',
-        prompt: 'Can your application support the use of two cryptographic algorithms (classical and post-quantum) in hybrid mode?',
+        prompt: 'Can your use case support the use of two cryptographic algorithms (classical and post-quantum) in hybrid mode?',
         options: ['Yes', 'No', "Don't know"],
     },
     {
@@ -91,37 +91,37 @@ const questions = [
         name: 'q6',
         topic: 'New hardware',
         intro: 'For hardware applications, it can occur that the hardware cannot be replaced or updated. Some schemes can be re-designed to accommodate pre-existing hardware, but it is possible that new -hardware might be required to execute the operation of the new post-quantum algorithms.',
-        prompt: 'My application can afford to use new hardware.',
+        prompt: 'My use case can afford to use new hardware.',
         options: ['Completely disagree', 'Disagree', 'Neutral', 'Agree', 'Completely agree'],
     },
     {
         type: 'radio',
         name: 'q7',
         topic: 'Space requirement',
-        intro: 'The design of the new cryptographic schemes makes them slower than the currently deployed cryptographic schemes like RSA and ECC and will use larger cryptographic keys. This will impact the application, both in resources and time, and if not used correctly, they might become a bottleneck. The application will have to handle larger cryptographic materials (keys, ciphertexts, signatures, etc) which have to be stored and transmitted.',
-        prompt: 'My application can afford larger cryptographic keys and ciphertexts.',
+        intro: 'The design of the new cryptographic schemes makes them slower than the currently deployed cryptographic schemes like RSA and ECC and will use larger cryptographic keys. This will impact the application, both in resources and time, and if not used correctly, they might become a bottleneck. The application will have to handle larger cryptographic materials (keys, ciphertexts, etc.) which have to be stored and transmitted.',
+        prompt: 'My use case can afford larger cryptographic keys and ciphertexts than currently in use.',
         options: ['Completely disagree', 'Disagree', 'Neutral', 'Agree', 'Completely agree'],
     },
     {
         type: 'slider',
         name: 'q7-1',
         topic: 'Communication requirement',
-        intro: 'The sensibly larger cryptographic keys and ciphertexts/signatures will need to be handled in all the stages of data handling: Data in transit, data in use and data at rest. It is paramount that the application can allocate additional resources to the different stages of data handling. If you want to answer one of the expert questions, but do not know an answer to one of the others, choose -1.',
-        prompt: 'Can your application afford additional communiction cost bandwidth (in MB)?',
+        intro: 'The sensibly larger cryptographic keys and ciphertexts will need to be handled in all the stages of data handling: Data in transit, data in use and data at rest. It is paramount that the application can allocate additional resources to the different stages of data handling. If you want to answer one of the expert questions, but do not know an answer to one of the others, choose -1.',
+        prompt: 'Can your use case afford additional communication cost (in bandwidth)?',
         options: [-1, 1000, -1, "MB"],
     },
     {
         type: 'slider',
         name: 'q7-2',
         topic: 'Memory requirement',
-        prompt: 'Can your application afford additional RAM usage (in MB)?',
+        prompt: 'Can your use case afford additional RAM usage?',
         options: [-1, 1000, -1, "MB"],
     },
     {
         type: 'slider',
         name: 'q7-3',
         topic: 'Storage requirement',
-        prompt: 'Can your application afford additional long-term storage (in GB)?',
+        prompt: 'Can your use case afford additional long-term storage?',
         options: [-1, 100, -1, "GB"],
     },
     {
@@ -129,7 +129,7 @@ const questions = [
         name: 'q8',
         topic: 'Delay requirement',
         intro: 'The post-quantum cryptographic schemes will be less efficient than the currently used schemes, which might negatively impact the application they are operating in, especially if it is time sensitive or heavily performance-based.',
-        prompt: 'My application can afford additional delay.',
+        prompt: 'My use case can afford additional delay compared to the currently solution in place.',
         options: ['Completely disagree', 'Disagree', 'Neutral', 'Agree', 'Completely agree'],
     },
     {
@@ -137,14 +137,14 @@ const questions = [
         name: 'q8-1',
         topic: 'Communication time',
         intro: 'If you want to answer one of the expert questions, but do not know an answer to the other, choose -1.',
-        prompt: 'Can your application afford additional communication cost (in seconds)?',
+        prompt: 'Can your use case afford additional communication costs (in time)?',
         options: [-1, 60, -1, 'seconds'],
     },
     {
         type: 'slider',
         name: 'q8-2',
         topic: 'Computation time',
-        prompt: 'Can your application afford additional computational time (in seconds)?',
+        prompt: 'Can your use case afford additional computational time?',
         options: [-1, 60, -1, 'seconds'],
     },
     {
@@ -171,8 +171,8 @@ function displayQuestion(question) {
     if (expert) {
         questionLabel.innerHTML = `<br><p>⚠️ Note: the following is an expert level question</p>`;
         // questionLabel.style.background = '#af7a7a';
-    } else {
-        questionLabel.innerHTML = `<br>`;
+    } else if (!question.name.includes('Follow-up')) {
+        questionLabel.innerHTML = `<hr>`;
     }
     if (question.intro) {
         questionLabel.innerHTML += `<br><p>${question.intro}</p> <br> <strong>${expert ? 'Expert question' : 'Question'} ${question.name.slice(1)}:</strong> `;
