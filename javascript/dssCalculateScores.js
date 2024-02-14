@@ -116,21 +116,21 @@ const questions = [
         topic: 'Communication requirement',
         intro: 'The sensibly larger cryptographic keys and signatures will need to be handled in all the stages of data handling: Data in transit, data in use and data at rest. It is paramount that the application can allocate additional resources to the different stages of data handling. If you want to answer one of the expert questions, but do not know an answer to one of the others, choose -1.',
         prompt: 'Can your use case afford additional communication cost (in bandwidth)?',
-        options: [-1, 1000, -1, "MB"],
+        options: [-1, 100, -1, "kB"],
     },
     {
         type: 'slider',
         name: 'q7-2',
         topic: 'Memory requirement',
         prompt: 'Can your use case afford additional RAM usage?',
-        options: [-1, 1000, -1, "MB"],
+        options: [-1, 100, -1, "kB"],
     },
     {
         type: 'slider',
         name: 'q7-3',
         topic: 'Storage requirement',
         prompt: 'Can your use case afford additional long-term storage?',
-        options: [-1, 100, -1, "GB"],
+        options: [-1, 100, -1, "kB"],
     },
     {
         type: 'radio',
@@ -146,14 +146,14 @@ const questions = [
         topic: 'Communication time',
         intro: 'If you want to answer one of the expert questions, but do not know an answer to the other, choose -1.',
         prompt: 'Can your use case afford additional communication costs (in time)?',
-        options: [-1, 60, -1, 'seconds'],
+        options: [-1, 1000, -1, 'milliseconds'],
     },
     {
         type: 'slider',
         name: 'q8-2',
         topic: 'Computation time',
         prompt: 'Can your use case afford additional computational time?',
-        options: [-1, 60, -1, 'seconds'],
+        options: [-1, 1000, -1, 'milliseconds'],
     },
     {
         type: 'radio',
@@ -664,10 +664,10 @@ function question7(chosen) {
 
         // Question 7-1
         if (sessionStorage.getItem('q7-1') > -1 && averages.dilithium.withoutSk > -1) {
-            scores7.dilithium = Math.round((5 - averages.dilithium.withoutSk)/1000 * sessionStorage.getItem('q7-1') + averages.dilithium.withoutSk);
-            scores7.falcon = Math.round((5 - averages.falcon.withoutSk)/1000 * sessionStorage.getItem('q7-1') + averages.falcon.withoutSk);
-            scores7.sphincs = Math.round((5 - averages.sphincs.withoutSk)/1000 * sessionStorage.getItem('q7-1') + averages.sphincs.withoutSk);
-            scores7.xmss = Math.round((5 - averages.xmss.withoutSk)/1000 * sessionStorage.getItem('q7-1') + averages.xmss.withoutSk);
+            scores7.dilithium = Math.round((5 - averages.dilithium.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.dilithium.withoutSk);
+            scores7.falcon = Math.round((5 - averages.falcon.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.falcon.withoutSk);
+            scores7.sphincs = Math.round((5 - averages.sphincs.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.sphincs.withoutSk);
+            scores7.xmss = Math.round((5 - averages.xmss.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.xmss.withoutSk);
             numberOfAnswers += 1
         } else if (averages.dilithium.withoutSk > -1) {
             scores7.dilithium = Math.max(0, Math.round(averages.dilithium.withoutSk) - 2);
@@ -679,10 +679,10 @@ function question7(chosen) {
 
         // Question 7-2
         if (sessionStorage.getItem('q7-2') > -1) {
-            scores7.dilithium += Math.round((5 - averages.dilithium.all)/1000 * sessionStorage.getItem('q7-2') + averages.dilithium.all);
-            scores7.falcon += Math.round((5 - averages.falcon.all)/1000 * sessionStorage.getItem('q7-2') + averages.falcon.all);
-            scores7.sphincs += Math.round((5 - averages.sphincs.all)/1000 * sessionStorage.getItem('q7-2') + averages.sphincs.all);
-            scores7.xmss += Math.round((5 - averages.xmss.all)/1000 * sessionStorage.getItem('q7-2') + averages.xmss.all);
+            scores7.dilithium += Math.round((5 - averages.dilithium.all)/100 * sessionStorage.getItem('q7-2') + averages.dilithium.all);
+            scores7.falcon += Math.round((5 - averages.falcon.all)/100 * sessionStorage.getItem('q7-2') + averages.falcon.all);
+            scores7.sphincs += Math.round((5 - averages.sphincs.all)/100 * sessionStorage.getItem('q7-2') + averages.sphincs.all);
+            scores7.xmss += Math.round((5 - averages.xmss.all)/100 * sessionStorage.getItem('q7-2') + averages.xmss.all);
             numberOfAnswers += 1
         } else {
             scores7.dilithium += Math.max(0, Math.round(averages.dilithium.all) - 2);
@@ -694,10 +694,10 @@ function question7(chosen) {
 
         // Question 7-3
         if (sessionStorage.getItem('q7-3') > -1 && averages.dilithium.withoutSig > -1) {
-            scores7.dilithium += Math.round((5 - averages.dilithium.withoutSig)/1000 * sessionStorage.getItem('q7-3') + averages.dilithium.withoutSig);
-            scores7.falcon += Math.round((5 - averages.falcon.withoutSig)/1000 * sessionStorage.getItem('q7-3') + averages.falcon.withoutSig);
-            scores7.sphincs += Math.round((5 - averages.sphincs.withoutSig)/1000 * sessionStorage.getItem('q7-3') + averages.sphincs.withoutSig);
-            scores7.xmss += Math.round((5 - averages.xmss.withoutSig)/1000 * sessionStorage.getItem('q7-3') + averages.xmss.withoutSig);
+            scores7.dilithium += Math.round((5 - averages.dilithium.withoutSig)/100 * sessionStorage.getItem('q7-3') + averages.dilithium.withoutSig);
+            scores7.falcon += Math.round((5 - averages.falcon.withoutSig)/100 * sessionStorage.getItem('q7-3') + averages.falcon.withoutSig);
+            scores7.sphincs += Math.round((5 - averages.sphincs.withoutSig)/100 * sessionStorage.getItem('q7-3') + averages.sphincs.withoutSig);
+            scores7.xmss += Math.round((5 - averages.xmss.withoutSig)/100 * sessionStorage.getItem('q7-3') + averages.xmss.withoutSig);
             numberOfAnswers += 1
         } else if (averages.dilithium.withoutSig > -1) {
             scores7.dilithium += Math.max(0, Math.round(averages.dilithium.withoutSig) - 2);
@@ -813,10 +813,10 @@ function question8(chosen) {
 
         // Question 8-1
         if (sessionStorage.getItem('q8-1') > -1 && averages.dilithium.withoutSk > -1) {
-            scores8.dilithium = Math.round((5 - averages.dilithium.withoutSk)/60 * sessionStorage.getItem('q8-1') + averages.dilithium.withoutSk);
-            scores8.falcon = Math.round((5 - averages.falcon.withoutSk)/60 * sessionStorage.getItem('q8-1') + averages.falcon.withoutSk);
-            scores8.sphincs = Math.round((5 - averages.sphincs.withoutSk)/60 * sessionStorage.getItem('q8-1') + averages.sphincs.withoutSk);
-            scores8.xmss = Math.round((5 - averages.xmss.withoutSk)/60 * sessionStorage.getItem('q8-1') + averages.xmss.withoutSk);
+            scores8.dilithium = Math.round((5 - averages.dilithium.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.dilithium.withoutSk);
+            scores8.falcon = Math.round((5 - averages.falcon.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.falcon.withoutSk);
+            scores8.sphincs = Math.round((5 - averages.sphincs.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.sphincs.withoutSk);
+            scores8.xmss = Math.round((5 - averages.xmss.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.xmss.withoutSk);
             numberOfAnswers += 1
         } else if (averages.dilithium.withoutSk > -1) {
             scores8.dilithium = Math.max(0, Math.round(averages.dilithium.withoutSk) - 2);
@@ -828,10 +828,10 @@ function question8(chosen) {
 
         // Question 8-2
         if (sessionStorage.getItem('q8-2') > -1) {
-            scores8.dilithium += Math.round((5 - averages.dilithium.all)/60 * sessionStorage.getItem('q8-2') + averages.dilithium.all);
-            scores8.falcon += Math.round((5 - averages.falcon.all)/60 * sessionStorage.getItem('q8-2') + averages.falcon.all);
-            scores8.sphincs += Math.round((5 - averages.sphincs.all)/60 * sessionStorage.getItem('q8-2') + averages.sphincs.all);
-            scores8.xmss += Math.round((5 - averages.xmss.all)/60 * sessionStorage.getItem('q8-2') + averages.xmss.all);
+            scores8.dilithium += Math.round((5 - averages.dilithium.all)/1000 * sessionStorage.getItem('q8-2') + averages.dilithium.all);
+            scores8.falcon += Math.round((5 - averages.falcon.all)/1000 * sessionStorage.getItem('q8-2') + averages.falcon.all);
+            scores8.sphincs += Math.round((5 - averages.sphincs.all)/1000 * sessionStorage.getItem('q8-2') + averages.sphincs.all);
+            scores8.xmss += Math.round((5 - averages.xmss.all)/1000 * sessionStorage.getItem('q8-2') + averages.xmss.all);
             numberOfAnswers += 1;
         } else {
             scores8.dilithium += Math.max(0, Math.round(averages.dilithium.all) - 2);

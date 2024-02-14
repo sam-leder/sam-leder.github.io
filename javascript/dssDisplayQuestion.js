@@ -116,21 +116,21 @@ const questions = [
         topic: 'Communication requirement',
         intro: 'The sensibly larger cryptographic keys and signatures will need to be handled in all the stages of data handling: Data in transit, data in use and data at rest. It is paramount that the application can allocate additional resources to the different stages of data handling. If you want to answer one of the expert questions, but do not know an answer to one of the others, choose -1.',
         prompt: 'Can your use case afford additional communication cost (in bandwidth)?',
-        options: [-1, 1000, -1, "MB"],
+        options: [-1, 100, -1, "kB"],
     },
     {
         type: 'slider',
         name: 'q7-2',
         topic: 'Memory requirement',
         prompt: 'Can your use case afford additional RAM usage?',
-        options: [-1, 1000, -1, "MB"],
+        options: [-1, 100, -1, "kB"],
     },
     {
         type: 'slider',
         name: 'q7-3',
         topic: 'Storage requirement',
         prompt: 'Can your use case afford additional long-term storage?',
-        options: [-1, 100, -1, "GB"],
+        options: [-1, 100, -1, "kB"],
     },
     {
         type: 'radio',
@@ -146,14 +146,14 @@ const questions = [
         topic: 'Communication time',
         intro: 'If you want to answer one of the expert questions, but do not know an answer to the other, choose -1.',
         prompt: 'Can your use case afford additional communication costs (in time)?',
-        options: [-1, 60, -1, 'seconds'],
+        options: [-1, 1000, -1, 'milliseconds'],
     },
     {
         type: 'slider',
         name: 'q8-2',
         topic: 'Computation time',
         prompt: 'Can your use case afford additional computational time?',
-        options: [-1, 60, -1, 'seconds'],
+        options: [-1, 1000, -1, 'milliseconds'],
     },
     {
         type: 'radio',
@@ -309,6 +309,8 @@ function displayQuestion(question) {
             sliderSpan.id = `${question.name}s`;
             sliderSpan.value = sliderInput.value;
             sliderP.appendChild(sliderSpan);
+            const sliderType = document.createTextNode(" " + question.options[3]);
+            sliderP.appendChild(sliderType);
             sliderDiv.appendChild(sliderP);
 
             sliderInput.oninput = function() {

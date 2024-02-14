@@ -108,21 +108,21 @@ const questions = [
         topic: 'Communication requirement',
         intro: 'The sensibly larger cryptographic keys and ciphertexts will need to be handled in all the stages of data handling: Data in transit, data in use and data at rest. It is paramount that the application can allocate additional resources to the different stages of data handling. If you want to answer one of the expert questions, but do not know an answer to one of the others, choose -1.',
         prompt: 'Can your use case afford additional communication cost (in bandwidth)?',
-        options: [-1, 1000, -1, "MB"],
+        options: [-1, 100, -1, "kB"],
     },
     {
         type: 'slider',
         name: 'q7-2',
         topic: 'Memory requirement',
         prompt: 'Can your use case afford additional RAM usage?',
-        options: [-1, 1000, -1, "MB"],
+        options: [-1, 100, -1, "kB"],
     },
     {
         type: 'slider',
         name: 'q7-3',
         topic: 'Storage requirement',
         prompt: 'Can your use case afford additional long-term storage?',
-        options: [-1, 100, -1, "GB"],
+        options: [-1, 100, -1, "kB"],
     },
     {
         type: 'radio',
@@ -138,14 +138,14 @@ const questions = [
         topic: 'Communication time',
         intro: 'If you want to answer one of the expert questions, but do not know an answer to the other, choose -1.',
         prompt: 'Can your use case afford additional communication costs (in time)?',
-        options: [-1, 60, -1, 'seconds'],
+        options: [-1, 1000, -1, 'milliseconds'],
     },
     {
         type: 'slider',
         name: 'q8-2',
         topic: 'Computation time',
         prompt: 'Can your use case afford additional computational time?',
-        options: [-1, 60, -1, 'seconds'],
+        options: [-1, 1000, -1, 'milliseconds'],
     },
     {
         type: 'checkbox',
@@ -551,9 +551,9 @@ function question7(chosen) {
 
         // Question 7-1
         if (sessionStorage.getItem('q7-1') > -1 && averages.kyber.withoutSk > -1) {
-            scores7.kyber = Math.round((5 - averages.kyber.withoutSk)/1000 * sessionStorage.getItem('q7-1') + averages.kyber.withoutSk);
-            scores7.frodokem = Math.round((5 - averages.frodokem.withoutSk)/1000 * sessionStorage.getItem('q7-1') + averages.frodokem.withoutSk);
-            scores7.mceliece = Math.round((5 - averages.mceliece.withoutSk)/1000 * sessionStorage.getItem('q7-1') + averages.mceliece.withoutSk);
+            scores7.kyber = Math.round((5 - averages.kyber.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.kyber.withoutSk);
+            scores7.frodokem = Math.round((5 - averages.frodokem.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.frodokem.withoutSk);
+            scores7.mceliece = Math.round((5 - averages.mceliece.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.mceliece.withoutSk);
             numberOfAnswers += 1
         } else if (averages.kyber.withoutSk > -1) {
             scores7.kyber = Math.max(0, Math.round(averages.kyber.withoutSk) - 2);
@@ -564,9 +564,9 @@ function question7(chosen) {
 
         // Question 7-2
         if (sessionStorage.getItem('q7-2') > -1) {
-            scores7.kyber += Math.round((5 - averages.kyber.all)/1000 * sessionStorage.getItem('q7-2') + averages.kyber.all);
-            scores7.frodokem += Math.round((5 - averages.frodokem.all)/1000 * sessionStorage.getItem('q7-2') + averages.frodokem.all);
-            scores7.mceliece += Math.round((5 - averages.mceliece.all)/1000 * sessionStorage.getItem('q7-2') + averages.mceliece.all);
+            scores7.kyber += Math.round((5 - averages.kyber.all)/100 * sessionStorage.getItem('q7-2') + averages.kyber.all);
+            scores7.frodokem += Math.round((5 - averages.frodokem.all)/100 * sessionStorage.getItem('q7-2') + averages.frodokem.all);
+            scores7.mceliece += Math.round((5 - averages.mceliece.all)/100 * sessionStorage.getItem('q7-2') + averages.mceliece.all);
             numberOfAnswers += 1
         } else {
             scores7.kyber += Math.max(0, Math.round(averages.kyber.all) - 2);
@@ -577,9 +577,9 @@ function question7(chosen) {
 
         // Question 7-3
         if (sessionStorage.getItem('q7-3') > -1 && averages.kyber.withoutCtxt > -1) {
-            scores7.kyber += Math.round((5 - averages.kyber.withoutCtxt)/1000 * sessionStorage.getItem('q7-3') + averages.kyber.withoutCtxt);
-            scores7.frodokem += Math.round((5 - averages.frodokem.withoutCtxt)/1000 * sessionStorage.getItem('q7-3') + averages.frodokem.withoutCtxt);
-            scores7.mceliece += Math.round((5 - averages.mceliece.withoutCtxt)/1000 * sessionStorage.getItem('q7-3') + averages.mceliece.withoutCtxt);
+            scores7.kyber += Math.round((5 - averages.kyber.withoutCtxt)/100 * sessionStorage.getItem('q7-3') + averages.kyber.withoutCtxt);
+            scores7.frodokem += Math.round((5 - averages.frodokem.withoutCtxt)/100 * sessionStorage.getItem('q7-3') + averages.frodokem.withoutCtxt);
+            scores7.mceliece += Math.round((5 - averages.mceliece.withoutCtxt)/100 * sessionStorage.getItem('q7-3') + averages.mceliece.withoutCtxt);
             numberOfAnswers += 1
         } else if (averages.kyber.withoutCtxt > -1) {
             scores7.kyber += Math.max(0, Math.round(averages.kyber.withoutCtxt) - 2);
@@ -687,9 +687,9 @@ function question8(chosen) {
 
         // Question 8-1
         if (sessionStorage.getItem('q8-1') > -1 && averages.kyber.withoutSk > -1) {
-            scores8.kyber = Math.round((5 - averages.kyber.withoutSk)/60 * sessionStorage.getItem('q8-1') + averages.kyber.withoutSk);
-            scores8.frodokem = Math.round((5 - averages.frodokem.withoutSk)/60 * sessionStorage.getItem('q8-1') + averages.frodokem.withoutSk);
-            scores8.mceliece = Math.round((5 - averages.mceliece.withoutSk)/60 * sessionStorage.getItem('q8-1') + averages.mceliece.withoutSk);
+            scores8.kyber = Math.round((5 - averages.kyber.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.kyber.withoutSk);
+            scores8.frodokem = Math.round((5 - averages.frodokem.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.frodokem.withoutSk);
+            scores8.mceliece = Math.round((5 - averages.mceliece.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.mceliece.withoutSk);
             numberOfAnswers += 1
         } else if (averages.kyber.withoutSk > -1) {
             scores8.kyber = Math.max(0, Math.round(averages.kyber.withoutSk) - 2);
@@ -700,9 +700,9 @@ function question8(chosen) {
 
         // Question 8-2
         if (sessionStorage.getItem('q8-2') > -1) {
-            scores8.kyber += Math.round((5 - averages.kyber.all)/60 * sessionStorage.getItem('q8-2') + averages.kyber.all);
-            scores8.frodokem += Math.round((5 - averages.frodokem.all)/60 * sessionStorage.getItem('q8-2') + averages.frodokem.all);
-            scores8.mceliece += Math.round((5 - averages.mceliece.all)/60 * sessionStorage.getItem('q8-2') + averages.mceliece.all);
+            scores8.kyber += Math.round((5 - averages.kyber.all)/1000 * sessionStorage.getItem('q8-2') + averages.kyber.all);
+            scores8.frodokem += Math.round((5 - averages.frodokem.all)/1000 * sessionStorage.getItem('q8-2') + averages.frodokem.all);
+            scores8.mceliece += Math.round((5 - averages.mceliece.all)/1000 * sessionStorage.getItem('q8-2') + averages.mceliece.all);
             numberOfAnswers += 1;
         } else {
             scores8.kyber += Math.max(0, Math.round(averages.kyber.all) - 2);
