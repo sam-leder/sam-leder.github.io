@@ -301,6 +301,7 @@ body {
   display: flex;
   justify-content: space-between; /* Adjust as needed */
   align-items: center; /* Align images vertically in the center */
+  max-width: 30em;
 }
 
 .image-container img {
