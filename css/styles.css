@@ -18,10 +18,15 @@ body {
 
 .form-wrapper {
   margin: 0 auto;
-  max-width: 570px;
+  max-width: 960px;
   width: 100%;
   background: white;
-  padding: 40px;
+}
+
+@media only screen and (min-width: 960px) {
+  .form-wrapper {
+    max-width: 33%;
+  }
 }
 
 .form-img {
