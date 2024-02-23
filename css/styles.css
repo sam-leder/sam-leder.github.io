@@ -18,16 +18,10 @@ body {
 
 .form-wrapper {
   margin: 0 auto;
-  max-width: 40em;
+  max-width: 570px;
   width: 100%;
   background: white;
-}
-
-@media only screen and (min-width: 960px) {
-  .form-wrapper {
-    max-width: 33%;
-    color: green;
-  }
+  padding: 40px;
 }
 
 .form-img {
@@ -183,9 +177,9 @@ body {
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 15px 10px;
+  padding: 15px 50px;
   text-decoration: none;
-  font-size: 8px;
+  font-size: 20px;
   font-weight: 800;
 }
 
@@ -301,7 +295,6 @@ body {
   display: flex;
   justify-content: space-between; /* Adjust as needed */
   align-items: center; /* Align images vertically in the center */
-  max-width: 30em;
 }
 
 .image-container img {
