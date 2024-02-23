@@ -26,6 +26,7 @@ body {
 @media only screen and (min-width: 960px) {
   .form-wrapper {
     max-width: 33%;
+    color: green;
   }
 }
 
