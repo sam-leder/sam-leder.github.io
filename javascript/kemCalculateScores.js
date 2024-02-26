@@ -162,34 +162,34 @@ questions.slice(0, -1).forEach((question, index) => {
 });
 
 function question1() {
-    chosen = {kyber: {performance: {}, size: {}}, frodokem: {performance: {}, size: {}}, mceliece: {performance: {}, size: {}}}
+    chosen = {mlkem: {performance: {}, size: {}}, frodokem: {performance: {}, size: {}}, mceliece: {performance: {}, size: {}}}
     if (sessionStorage.getItem('q1').includes('Key generation')) {
-        chosen.kyber.performance.keygen     = 5;
+        chosen.mlkem.performance.keygen     = 5;
         chosen.frodokem.performance.keygen  = 2;
         chosen.mceliece.performance.keygen  = 1;
     }
     if (sessionStorage.getItem('q1').includes('Encapsulation')) {
-        chosen.kyber.performance.enc     = 5;
+        chosen.mlkem.performance.enc     = 5;
         chosen.frodokem.performance.enc  = 2;
         chosen.mceliece.performance.enc  = 4;
     }
     if (sessionStorage.getItem('q1').includes('Decapsulation')) {
-        chosen.kyber.performance.dec     = 5;
+        chosen.mlkem.performance.dec     = 5;
         chosen.frodokem.performance.dec  = 2;
         chosen.mceliece.performance.dec  = 3;
     }
     if (sessionStorage.getItem('q1').includes('Key generation') || sessionStorage.getItem('q1').includes('Decapsulation')) {
-        chosen.kyber.size.sk     = 5;
+        chosen.mlkem.size.sk     = 5;
         chosen.frodokem.size.sk  = 1;
         chosen.mceliece.size.sk  = 4;
     }
     if (sessionStorage.getItem('q1').includes('Key generation') || sessionStorage.getItem('q1').includes('Encapsulation')) {
-        chosen.kyber.size.pk     = 5;
+        chosen.mlkem.size.pk     = 5;
         chosen.frodokem.size.pk  = 2;
         chosen.mceliece.size.pk  = 0;
     }
     if (sessionStorage.getItem('q1').includes('Encapsulation') || sessionStorage.getItem('q1').includes('Decapsulation')) {
-        chosen.kyber.size.ctxt     = 3;
+        chosen.mlkem.size.ctxt     = 3;
         chosen.frodokem.size.ctxt  = 1;
         chosen.mceliece.size.ctxt  = 5;
     }
@@ -198,28 +198,28 @@ function question1() {
 }
 
 function question2() {
-    let scores2 = {kyber: 3, frodokem: 4, mceliece: 5};
+    let scores2 = {mlkem: 3, frodokem: 4, mceliece: 5};
 
     // Include result from question 2
     if (sessionStorage.getItem('q2') > -1) {
-        scores2.kyber = Math.round(3 - sessionStorage.getItem('q2') * 2 / 30);
+        scores2.mlkem = Math.round(3 - sessionStorage.getItem('q2') * 2 / 30);
         scores2.frodokem = Math.round(4 - sessionStorage.getItem('q2') / 30);
     }
 
     // Include result from question 2 follow-up
     switch (sessionStorage.getItem('q2 (Follow-up)')) {
         case 'Yes':
-            scores2.kyber = (scores2.kyber + 2)/2;
+            scores2.mlkem = (scores2.mlkem + 2)/2;
             scores2.frodokem = (scores2.frodokem + 3)/2;
             scores2.mceliece = (scores2.mceliece + 5)/2;
             break;
         case 'No':
-            scores2.kyber = (scores2.kyber + 3)/2;
+            scores2.mlkem = (scores2.mlkem + 3)/2;
             scores2.frodokem = (scores2.frodokem + 3)/2;
             scores2.mceliece = (scores2.mceliece + 3)/2;
             break;
         default: // Don't know
-            scores2.kyber = (scores2.kyber + 2)/2;
+            scores2.mlkem = (scores2.mlkem + 2)/2;
             scores2.frodokem = (scores2.frodokem + 3)/2;
             scores2.mceliece = (scores2.mceliece + 4)/2;
     }
@@ -235,56 +235,56 @@ function question3() {
 
         switch (sessionStorage.getItem('q3-1')) {
             case 'Completely agree':
-                scores3.kyber      = 1;
+                scores3.mlkem      = 1;
                 scores3.frodokem   = 5;
                 scores3.mceliece   = 5;
                 break;
             case 'Agree':
-                scores3.kyber      = 2;
+                scores3.mlkem      = 2;
                 scores3.frodokem   = 4;
                 scores3.mceliece   = 4;
                 break;
             case 'Neutral':
-                scores3.kyber      = 3;
+                scores3.mlkem      = 3;
                 scores3.frodokem   = 3;
                 scores3.mceliece   = 3;
                 break;
             case 'Disagree':
-                scores3.kyber      = 4;
+                scores3.mlkem      = 4;
                 scores3.frodokem   = 2;
                 scores3.mceliece   = 2;
                 break;
             case 'Completely disagree':
-                scores3.kyber      = 5;
+                scores3.mlkem      = 5;
                 scores3.frodokem   = 1;
                 scores3.mceliece   = 5;
                 break;
             default:
-                scores3.kyber      = 0;
+                scores3.mlkem      = 0;
                 scores3.frodokem   = 0;
                 scores3.mceliece   = 0;
         }
 
         switch (sessionStorage.getItem('q3-3')) {
             case 'Yes':
-                scores3.kyber      += 5;
+                scores3.mlkem      += 5;
                 scores3.frodokem   += 3;
                 scores3.mceliece   += 1;
                 break;
             case 'No':
-                scores3.kyber      += 1;
+                scores3.mlkem      += 1;
                 scores3.frodokem   += 3;
                 scores3.mceliece   += 5;
                 break;
             default: // Don't know
-                scores3.kyber      += 0;
+                scores3.mlkem      += 0;
                 scores3.frodokem   += 0;
                 scores3.mceliece   += 0;
         }
 
         // Normalise over subquestions if multiple were answered
         if (sessionStorage.getItem('q3-1') && sessionStorage.getItem('q3-3')) {
-            scores3.kyber      /= 2;
+            scores3.mlkem      /= 2;
             scores3.frodokem   /= 2;
             scores3.mceliece   /= 2;
         }
@@ -293,32 +293,32 @@ function question3() {
         // Use answer of Question 3
         switch (sessionStorage.getItem('q3')) {
             case 'Completely agree':
-                scores3.kyber      = 5;
+                scores3.mlkem      = 5;
                 scores3.frodokem   = 1;
                 scores3.mceliece   = 5;
                 break;
             case 'Agree':
-                scores3.kyber      = 4;
+                scores3.mlkem      = 4;
                 scores3.frodokem   = 2;
                 scores3.mceliece   = 4;
                 break;
             case 'Neutral':
-                scores3.kyber      = 3;
+                scores3.mlkem      = 3;
                 scores3.frodokem   = 3;
                 scores3.mceliece   = 3;
                 break;
             case 'Disagree':
-                scores3.kyber      = 2;
+                scores3.mlkem      = 2;
                 scores3.frodokem   = 4;
                 scores3.mceliece   = 2;
                 break;
             case 'Completely disagree':
-                scores3.kyber      = 1;
+                scores3.mlkem      = 1;
                 scores3.frodokem   = 5;
                 scores3.mceliece   = 1;
                 break;
             default:
-                scores3.kyber      = 0;
+                scores3.mlkem      = 0;
                 scores3.frodokem   = 0;
                 scores3.mceliece   = 0;
         }
@@ -328,38 +328,38 @@ function question3() {
 }
 
 function question4() {
-    let scores4 = {kyber: 0, frodokem: 0, mceliece: 0};
+    let scores4 = {mlkem: 0, frodokem: 0, mceliece: 0};
 
     let numberOfAnswers = 0;
 
     if (sessionStorage.getItem('q4').includes('NIST')) {
-        scores4.kyber       += 5;
+        scores4.mlkem       += 5;
         scores4.frodokem    += 1;
         scores4.mceliece    += 3;
         numberOfAnswers     += 1;
     }
 
     if (sessionStorage.getItem('q4').includes('ISO')) {
-        scores4.kyber       += 2;
+        scores4.mlkem       += 2;
         scores4.frodokem    += 2;
         scores4.mceliece    += 2;
         numberOfAnswers     += 1;
     }
 
     if (sessionStorage.getItem('q4').includes('IETF')) {
-        scores4.kyber       += 3;
+        scores4.mlkem       += 3;
         scores4.frodokem    += 0;
         scores4.mceliece    += 0;
         numberOfAnswers     += 1;
     }
     // If only Don't know or nothing is selected
     if (numberOfAnswers == 0) {
-        return {kyber: 5, frodokem: 3, mceliece: 3};
+        return {mlkem: 5, frodokem: 3, mceliece: 3};
     }
 
     // Normalise over number of chosen standardisation bodies
     if (numberOfAnswers >= 1) {
-        scores4.kyber       /= numberOfAnswers;
+        scores4.mlkem       /= numberOfAnswers;
         scores4.frodokem    /= numberOfAnswers;
         scores4.mceliece    /= numberOfAnswers;
     }
@@ -369,26 +369,26 @@ function question4() {
 
 function question5() {
 
-    let scores5 = {kyber: 0, frodokem: 0, mceliece: 0};
+    let scores5 = {mlkem: 0, frodokem: 0, mceliece: 0};
 
     let numberOfAnswers = 0;
 
     if (sessionStorage.getItem('q5-1')) {
         // Use answer of question 5-1
         if (sessionStorage.getItem('q5-1').includes('Hash function calls')) {
-            scores5.kyber       += 4;
+            scores5.mlkem       += 4;
             scores5.frodokem    += 4;
             scores5.mceliece    += 4;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q5-1').includes('Polynomial operations')) {
-            scores5.kyber       += 5;
+            scores5.mlkem       += 5;
             scores5.frodokem    += 4;
             scores5.mceliece    += 4;
             numberOfAnswers     += 1;
         }
         if (numberOfAnswers == 0 && sessionStorage.getItem('q5').includes("Don't know")) {
-            scores5.kyber       += 3.5;
+            scores5.mlkem       += 3.5;
             scores5.frodokem    += 3;
             scores5.mceliece    += 3;
             numberOfAnswers     += 1;
@@ -396,50 +396,50 @@ function question5() {
     } else if (sessionStorage.getItem('q5')) {
         // Use answer of question 5
         if (sessionStorage.getItem('q5').includes('Laptop (or higher performance)')) {
-            scores5.kyber       += 5;
+            scores5.mlkem       += 5;
             scores5.frodokem    += 5;
             scores5.mceliece    += 5;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q5').includes('Smart phone')) {
-            scores5.kyber       += 5;
+            scores5.mlkem       += 5;
             scores5.frodokem    += 5;
             scores5.mceliece    += 5;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q5').includes('IoT device')) {
-            scores5.kyber       += 4;
+            scores5.mlkem       += 4;
             scores5.frodokem    += 3;
             scores5.mceliece    += 3;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q5').includes('Smart card')) {
-            scores5.kyber       += 3;
+            scores5.mlkem       += 3;
             scores5.frodokem    += 0;
             scores5.mceliece    += 0;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q5').includes('Sensor')) {
-            scores5.kyber       += 2;
+            scores5.mlkem       += 2;
             scores5.frodokem    += 0;
             scores5.mceliece    += 0;
             numberOfAnswers     += 1;
         }
         if (numberOfAnswers == 0 && sessionStorage.getItem('q5').includes("Don't know")) {
-            scores5.kyber       += 5;
+            scores5.mlkem       += 5;
             scores5.frodokem    += 3;
             scores5.mceliece    += 2;
             numberOfAnswers     += 1;
         }
     } else {
         // Nothing is selected in question 5 or 5-1
-        scores5 = {kyber: 3.5, frodokem: 3, mceliece: 3};
+        scores5 = {mlkem: 3.5, frodokem: 3, mceliece: 3};
         numberOfAnswers += 1;
     }
 
     // Normalise over number of chosen standardisation bodies
     if (numberOfAnswers >= 1) {
-        scores5.kyber       /= numberOfAnswers;
+        scores5.mlkem       /= numberOfAnswers;
         scores5.frodokem    /= numberOfAnswers;
         scores5.mceliece    /= numberOfAnswers;
     }
@@ -448,19 +448,20 @@ function question5() {
 }
 
 function question6() {
+    console.log(sessionStorage.getItem('q6'));
     switch (sessionStorage.getItem('q6')) {
         case 'Completely agree':
-            return {kyber: 5, frodokem: 5, mceliece: 5};
+            return {mlkem: 5, frodokem: 5, mceliece: 5};
         case 'Agree':
-            return {kyber: 4.5, frodokem: 4, mceliece: 4};
+            return {mlkem: 4.5, frodokem: 4, mceliece: 4};
         case 'Neutral':
-            return {kyber: 4, frodokem: 3, mceliece: 3};
+            return {mlkem: 4, frodokem: 3, mceliece: 3};
         case 'Disagree':
-            return {kyber: 3.5, frodokem: 2.5, mceliece: 2.5};
+            return {mlkem: 3.5, frodokem: 2.5, mceliece: 2.5};
         case 'Completely disagree':
-            return {kyber: 3, frodokem: 2, mceliece: 2};
+            return {mlkem: 3, frodokem: 2, mceliece: 2};
         default:
-            return {kyber: 0, frodokem: 0, mceliece: 0};
+            return {mlkem: 0, frodokem: 0, mceliece: 0};
     }
 }
 
@@ -506,41 +507,41 @@ function averageSizes(size) {
 }
 
 function question7(chosen) {
-    let scores7 = {kyber: 0, frodokem: 0, mceliece: 0};
-    if (!chosen.kyber.size) {
+    let scores7 = {mlkem: 0, frodokem: 0, mceliece: 0};
+    if (!chosen.mlkem.size) {
         // No sizes were chosen in question 1
         return scores7;
     }
-    averages = {kyber: averageSizes(chosen.kyber.size), frodokem: averageSizes(chosen.frodokem.size), mceliece: averageSizes(chosen.mceliece.size)};
+    averages = {mlkem: averageSizes(chosen.mlkem.size), frodokem: averageSizes(chosen.frodokem.size), mceliece: averageSizes(chosen.mceliece.size)};
 
     if (sessionStorage.getItem('q7')) {
         // Use answer to question 7
-        scores7.kyber = Math.round(averages.kyber.all);
+        scores7.mlkem = Math.round(averages.mlkem.all);
         scores7.frodokem = Math.round(averages.frodokem.all);
         scores7.mceliece = Math.round(averages.mceliece.all);
         switch (sessionStorage.getItem('q7')) {
             case 'Completely agree':
-                scores7.kyber = Math.max(0, scores7.kyber);
+                scores7.mlkem = Math.max(0, scores7.mlkem);
                 scores7.frodokem = Math.max(0, scores7.frodokem);
                 scores7.mceliece = Math.max(0, scores7.mceliece);
                 break;
             case 'Agree':
-                scores7.kyber = Math.max(0, scores7.kyber - 1);
+                scores7.mlkem = Math.max(0, scores7.mlkem - 1);
                 scores7.frodokem = Math.max(0, scores7.frodokem - 1);
                 scores7.mceliece = Math.max(0, scores7.mceliece - 1);
                 break;
             case 'Neutral':
-                scores7.kyber = Math.max(0, scores7.kyber - 2);
+                scores7.mlkem = Math.max(0, scores7.mlkem - 2);
                 scores7.frodokem = Math.max(0, scores7.frodokem - 2);
                 scores7.mceliece = Math.max(0, scores7.mceliece - 2);
                 break;
             case 'Disagree':
-                scores7.kyber = Math.max(0, scores7.kyber - 3);
+                scores7.mlkem = Math.max(0, scores7.mlkem - 3);
                 scores7.frodokem = Math.max(0, scores7.frodokem - 3);
                 scores7.mceliece = Math.max(0, scores7.mceliece - 3);
                 break;
             case 'Completely disagree':
-                scores7.kyber = Math.max(0, scores7.kyber - 4);
+                scores7.mlkem = Math.max(0, scores7.mlkem - 4);
                 scores7.frodokem = Math.max(0, scores7.frodokem - 4);
                 scores7.mceliece = Math.max(0, scores7.mceliece - 4);
                 break;
@@ -550,13 +551,13 @@ function question7(chosen) {
         let numberOfAnswers = 0;
 
         // Question 7-1
-        if (sessionStorage.getItem('q7-1') > -1 && averages.kyber.withoutSk > -1) {
-            scores7.kyber = Math.round((5 - averages.kyber.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.kyber.withoutSk);
+        if (sessionStorage.getItem('q7-1') > -1 && averages.mlkem.withoutSk > -1) {
+            scores7.mlkem = Math.round((5 - averages.mlkem.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.mlkem.withoutSk);
             scores7.frodokem = Math.round((5 - averages.frodokem.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.frodokem.withoutSk);
             scores7.mceliece = Math.round((5 - averages.mceliece.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.mceliece.withoutSk);
             numberOfAnswers += 1
-        } else if (averages.kyber.withoutSk > -1) {
-            scores7.kyber = Math.max(0, Math.round(averages.kyber.withoutSk) - 2);
+        } else if (averages.mlkem.withoutSk > -1) {
+            scores7.mlkem = Math.max(0, Math.round(averages.mlkem.withoutSk) - 2);
             scores7.frodokem = Math.max(0, Math.round(averages.frodokem.withoutSk) - 2);
             scores7.mceliece = Math.max(0, Math.round(averages.mceliece.withoutSk) - 2);
             numberOfAnswers += 1;
@@ -564,32 +565,32 @@ function question7(chosen) {
 
         // Question 7-2
         if (sessionStorage.getItem('q7-2') > -1) {
-            scores7.kyber += Math.round((5 - averages.kyber.all)/100 * sessionStorage.getItem('q7-2') + averages.kyber.all);
+            scores7.mlkem += Math.round((5 - averages.mlkem.all)/100 * sessionStorage.getItem('q7-2') + averages.mlkem.all);
             scores7.frodokem += Math.round((5 - averages.frodokem.all)/100 * sessionStorage.getItem('q7-2') + averages.frodokem.all);
             scores7.mceliece += Math.round((5 - averages.mceliece.all)/100 * sessionStorage.getItem('q7-2') + averages.mceliece.all);
             numberOfAnswers += 1
         } else {
-            scores7.kyber += Math.max(0, Math.round(averages.kyber.all) - 2);
+            scores7.mlkem += Math.max(0, Math.round(averages.mlkem.all) - 2);
             scores7.frodokem += Math.max(0, Math.round(averages.frodokem.all) - 2);
             scores7.mceliece += Math.max(0, Math.round(averages.mceliece.all) - 2);
             numberOfAnswers += 1;
         }
 
         // Question 7-3
-        if (sessionStorage.getItem('q7-3') > -1 && averages.kyber.withoutCtxt > -1) {
-            scores7.kyber += Math.round((5 - averages.kyber.withoutCtxt)/100 * sessionStorage.getItem('q7-3') + averages.kyber.withoutCtxt);
+        if (sessionStorage.getItem('q7-3') > -1 && averages.mlkem.withoutCtxt > -1) {
+            scores7.mlkem += Math.round((5 - averages.mlkem.withoutCtxt)/100 * sessionStorage.getItem('q7-3') + averages.mlkem.withoutCtxt);
             scores7.frodokem += Math.round((5 - averages.frodokem.withoutCtxt)/100 * sessionStorage.getItem('q7-3') + averages.frodokem.withoutCtxt);
             scores7.mceliece += Math.round((5 - averages.mceliece.withoutCtxt)/100 * sessionStorage.getItem('q7-3') + averages.mceliece.withoutCtxt);
             numberOfAnswers += 1
-        } else if (averages.kyber.withoutCtxt > -1) {
-            scores7.kyber += Math.max(0, Math.round(averages.kyber.withoutCtxt) - 2);
+        } else if (averages.mlkem.withoutCtxt > -1) {
+            scores7.mlkem += Math.max(0, Math.round(averages.mlkem.withoutCtxt) - 2);
             scores7.frodokem += Math.max(0, Math.round(averages.frodokem.withoutCtxt) - 2);
             scores7.mceliece += Math.max(0, Math.round(averages.mceliece.withoutCtxt) - 2);
             numberOfAnswers += 1;
         }
 
         if (numberOfAnswers >= 1) {
-            scores7.kyber       /= numberOfAnswers;
+            scores7.mlkem       /= numberOfAnswers;
             scores7.frodokem    /= numberOfAnswers;
             scores7.mceliece    /= numberOfAnswers;
         }
@@ -642,41 +643,41 @@ function averagePerformances(performance, size) {
 }
 
 function question8(chosen) {
-    let scores8 = {kyber: 0, frodokem: 0, mceliece: 0};
-    if (!chosen.kyber.size) {
+    let scores8 = {mlkem: 0, frodokem: 0, mceliece: 0};
+    if (!chosen.mlkem.size) {
         // No sizes were chosen in question 1
         return scores7;
     }
-    averages = {kyber: averagePerformances(chosen.kyber.performance, chosen.kyber.size), frodokem: averagePerformances(chosen.frodokem.performance, chosen.frodokem.size), mceliece: averagePerformances(chosen.mceliece.performance, chosen.mceliece.size)};
+    averages = {mlkem: averagePerformances(chosen.mlkem.performance, chosen.mlkem.size), frodokem: averagePerformances(chosen.frodokem.performance, chosen.frodokem.size), mceliece: averagePerformances(chosen.mceliece.performance, chosen.mceliece.size)};
 
     if (sessionStorage.getItem('q8')) {
         // Use answer to question 7
-        scores8.kyber = Math.round(averages.kyber.all);
+        scores8.mlkem = Math.round(averages.mlkem.all);
         scores8.frodokem = Math.round(averages.frodokem.all);
         scores8.mceliece = Math.round(averages.mceliece.all);
         switch (sessionStorage.getItem('q8')) {
             case 'Completely agree':
-                scores8.kyber = Math.max(0, scores8.kyber);
+                scores8.mlkem = Math.max(0, scores8.mlkem);
                 scores8.frodokem = Math.max(0, scores8.frodokem);
                 scores8.mceliece = Math.max(0, scores8.mceliece);
                 break;
             case 'Agree':
-                scores8.kyber = Math.max(0, scores8.kyber - 1);
+                scores8.mlkem = Math.max(0, scores8.mlkem - 1);
                 scores8.frodokem = Math.max(0, scores8.frodokem - 1);
                 scores8.mceliece = Math.max(0, scores8.mceliece - 1);
                 break;
             case 'Neutral':
-                scores8.kyber = Math.max(0, scores8.kyber - 2);
+                scores8.mlkem = Math.max(0, scores8.mlkem - 2);
                 scores8.frodokem = Math.max(0, scores8.frodokem - 2);
                 scores8.mceliece = Math.max(0, scores8.mceliece - 2);
                 break;
             case 'Disagree':
-                scores8.kyber = Math.max(0, scores8.kyber - 3);
+                scores8.mlkem = Math.max(0, scores8.mlkem - 3);
                 scores8.frodokem = Math.max(0, scores8.frodokem - 3);
                 scores8.mceliece = Math.max(0, scores8.mceliece - 3);
                 break;
             case 'Completely disagree':
-                scores8.kyber = Math.max(0, scores8.kyber - 4);
+                scores8.mlkem = Math.max(0, scores8.mlkem - 4);
                 scores8.frodokem = Math.max(0, scores8.frodokem - 4);
                 scores8.mceliece = Math.max(0, scores8.mceliece - 4);
                 break;
@@ -686,13 +687,13 @@ function question8(chosen) {
         let numberOfAnswers = 0;
 
         // Question 8-1
-        if (sessionStorage.getItem('q8-1') > -1 && averages.kyber.withoutSk > -1) {
-            scores8.kyber = Math.round((5 - averages.kyber.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.kyber.withoutSk);
+        if (sessionStorage.getItem('q8-1') > -1 && averages.mlkem.withoutSk > -1) {
+            scores8.mlkem = Math.round((5 - averages.mlkem.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.mlkem.withoutSk);
             scores8.frodokem = Math.round((5 - averages.frodokem.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.frodokem.withoutSk);
             scores8.mceliece = Math.round((5 - averages.mceliece.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.mceliece.withoutSk);
             numberOfAnswers += 1
-        } else if (averages.kyber.withoutSk > -1) {
-            scores8.kyber = Math.max(0, Math.round(averages.kyber.withoutSk) - 2);
+        } else if (averages.mlkem.withoutSk > -1) {
+            scores8.mlkem = Math.max(0, Math.round(averages.mlkem.withoutSk) - 2);
             scores8.frodokem = Math.max(0, Math.round(averages.frodokem.withoutSk) - 2);
             scores8.mceliece = Math.max(0, Math.round(averages.mceliece.withoutSk) - 2);
             numberOfAnswers += 1;
@@ -700,19 +701,19 @@ function question8(chosen) {
 
         // Question 8-2
         if (sessionStorage.getItem('q8-2') > -1) {
-            scores8.kyber += Math.round((5 - averages.kyber.all)/1000 * sessionStorage.getItem('q8-2') + averages.kyber.all);
+            scores8.mlkem += Math.round((5 - averages.mlkem.all)/1000 * sessionStorage.getItem('q8-2') + averages.mlkem.all);
             scores8.frodokem += Math.round((5 - averages.frodokem.all)/1000 * sessionStorage.getItem('q8-2') + averages.frodokem.all);
             scores8.mceliece += Math.round((5 - averages.mceliece.all)/1000 * sessionStorage.getItem('q8-2') + averages.mceliece.all);
             numberOfAnswers += 1;
         } else {
-            scores8.kyber += Math.max(0, Math.round(averages.kyber.all) - 2);
+            scores8.mlkem += Math.max(0, Math.round(averages.mlkem.all) - 2);
             scores8.frodokem += Math.max(0, Math.round(averages.frodokem.all) - 2);
             scores8.mceliece += Math.max(0, Math.round(averages.mceliece.all) - 2);
             numberOfAnswers += 1;
         }
 
         if (numberOfAnswers >= 1) {
-            scores8.kyber       /= numberOfAnswers;
+            scores8.mlkem       /= numberOfAnswers;
             scores8.frodokem    /= numberOfAnswers;
             scores8.mceliece    /= numberOfAnswers;
         }
@@ -723,7 +724,7 @@ function question8(chosen) {
 }
 
 function calculateScores() {
-    let kyberScore = 0;
+    let mlkemScore = 0;
     let frodokemScore = 0;
     let mcelieceScore = 0;
 
@@ -734,12 +735,13 @@ function calculateScores() {
 
     // Question 2
     let scores2 = question2();
+    console.log(" ", scores2)
     let factor = 1;
     if (sessionStorage.getItem('q9').includes('Question 2: Timespan') || sessionStorage.getItem('q9').includes('Question 2 (Follow-up): Classified information')) {
         factor = 2;
         maxScore += 5;
     }
-    kyberScore += factor * scores2.kyber;
+    mlkemScore += factor * scores2.mlkem;
     frodokemScore += factor * scores2.frodokem;
     mcelieceScore += factor * scores2.mceliece;
 
@@ -750,7 +752,7 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    kyberScore += factor * scores3.kyber;
+    mlkemScore += factor * scores3.mlkem;
     frodokemScore += factor * scores3.frodokem;
     mcelieceScore += factor * scores3.mceliece;
 
@@ -761,7 +763,7 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    kyberScore += factor * scores4.kyber;
+    mlkemScore += factor * scores4.mlkem;
     frodokemScore += factor * scores4.frodokem;
     mcelieceScore += factor * scores4.mceliece;
 
@@ -772,7 +774,7 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    kyberScore += factor * scores5.kyber;
+    mlkemScore += factor * scores5.mlkem;
     frodokemScore += factor * scores5.frodokem;
     mcelieceScore += factor * scores5.mceliece;
 
@@ -783,7 +785,7 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    kyberScore += factor * scores6.kyber;
+    mlkemScore += factor * scores6.mlkem;
     frodokemScore += factor * scores6.frodokem;
     mcelieceScore += factor * scores6.mceliece;
 
@@ -794,7 +796,7 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    kyberScore += factor * scores7.kyber;
+    mlkemScore += factor * scores7.mlkem;
     frodokemScore += factor * scores7.frodokem;
     mcelieceScore += factor * scores7.mceliece;
 
@@ -805,19 +807,31 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    kyberScore += factor * scores8.kyber;
+    mlkemScore += factor * scores8.mlkem;
     frodokemScore += factor * scores8.frodokem;
     mcelieceScore += factor * scores8.mceliece;
 
     //  Question 9 has been implemented with the factors above
+    
+    console.log(scores2, scores3, scores4, scores5, scores6, scores7, scores8)
 
+    // Unanswered main questions lead to lower possible max score
+    questions.forEach(question => {
+        let ans = sessionStorage.getItem(question.name);
+        if (question.name!=='q9' && question.name.indexOf('-')===-1 && (ans==='' || ans==='-1')) {
+            maxScore -= 5;
+        }
+    });
+    
     // Normalise to range 0-100
-    kyberScore = Math.round(kyberScore / maxScore * 100);
+    mlkemScore = Math.round(mlkemScore / maxScore * 100);
     frodokemScore = Math.round(frodokemScore / maxScore * 100);
     mcelieceScore = Math.round(mcelieceScore / maxScore * 100);
+    console.log(mlkemScore, frodokemScore, mcelieceScore, maxScore);
 
-    let scores = {"Kyber": kyberScore, "FrodoKEM": frodokemScore, "McEliece": mcelieceScore};
+    let scores = {"ML-KEM": mlkemScore, "FrodoKEM": frodokemScore, "McEliece": mcelieceScore};
     const sortedScores = Object.fromEntries(Object.entries(scores).sort(([, value1], [, value2]) => value2 - value1));
+    console.log(sortedScores);
 
     return sortedScores;
 }
@@ -825,11 +839,11 @@ function calculateScores() {
 function adviceSecurityLevel() {
     switch (sessionStorage.getItem('q3-2')) {
         case '128 bits - NIST level 1 - 3072 bit RSA keys - 256 bit ECC keys':
-            return 'Kyber-512, FrodoKEM-640 or mceliece348864';
+            return 'ML-KEM-512, FrodoKEM-640 or mceliece348864';
         case '192 bits - NIST level 3 - 7680 bit RSA keys - 384 bit ECC keys':
-            return 'Kyber-768, FrodoKEM-976 or mceliece460896';
+            return 'ML-KEM-768, FrodoKEM-976 or mceliece460896';
         case '256 bits - NIST level 5 - 15360 bit RSA keys - 521 bit ECC keys':
-            return 'Kyber-1024, FrodoKEM-1344 or mceliece6688128';
+            return 'ML-KEM-1024, FrodoKEM-1344 or mceliece6688128';
         default:
             return false;
     }
@@ -851,12 +865,17 @@ for (const scheme in scores) {
     div.innerHTML += `<h3><center>${scheme}: ${scores[scheme]}</center></h3>`;
 }
 
+// Print advice basend on answer of question 4 (standardizations)
+if (sessionStorage.getItem('q4') == 'NIST') {
+    div.innerHTML += `<br><p>⚠️ Note: Based on your answer to question 4, you are bound by standardization. NIST is currently in the process of standardizing ML-KEM. McEliece is also a candidate in the fourth round of the NIST post-quantum cryptography competition.</p>`;
+}
+
 // Print advice basend on answer of question 2 follow-up
 if (sessionStorage.getItem('q2 (Follow-up)') == 'Yes') {
-    div.innerHTML += `<br><p>Based on your answer to question 2 (Follow-up), if your application handles (Dutch) classified information (Dutch: Gerubriceerde informatie), please contact the NLNCSA (Dutch: Nationaal Bureau voor Verbindingsbeveiliging, NBV) for guidance on how to protect classified data from the quantum threat.</p>`;
+    div.innerHTML += `<br><p>⚠️ Note: Based on your answer to question 2 (Follow-up), if your application handles (Dutch) classified information (Dutch: Gerubriceerde informatie), please contact the NLNCSA (Dutch: Nationaal Bureau voor Verbindingsbeveiliging, NBV) for guidance on how to protect classified data from the quantum threat.</p>`;
 }
 
 // Print advice based on answer of question 3-2
 if (sessionStorage.getItem('q3-2')) {
-    div.innerHTML += `<br><p>PQC algorithms with the same security level as your answer to question 3-2 would be ${adviceSecurityLevel()}.</p>`;
+    div.innerHTML += `<br><p>⚠️ Note: PQC algorithms with the same security level as your answer to question 3-2 would be ${adviceSecurityLevel()}.</p>`;
 }

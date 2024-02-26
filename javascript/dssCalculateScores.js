@@ -194,41 +194,41 @@ questions.slice(0, -1).forEach((question, index) => {
 });
 
 function question1() {
-    chosen = {dilithium: {performance: {}, size: {}}, falcon: {performance: {}, size: {}}, sphincs: {performance: {}, size: {}}, xmss: {performance: {}, size: {}}}
+    chosen = {mldsa: {performance: {}, size: {}}, falcon: {performance: {}, size: {}}, sldsa: {performance: {}, size: {}}, xmss: {performance: {}, size: {}}}
     if (sessionStorage.getItem('q1').includes('Key generation')) {
-        chosen.dilithium.performance.keygen = 4;
+        chosen.mldsa.performance.keygen = 4;
         chosen.falcon.performance.keygen    = 2;
-        chosen.sphincs.performance.keygen   = 1;
+        chosen.sldsa.performance.keygen   = 1;
         chosen.xmss.performance.keygen      = 2;
     }
     if (sessionStorage.getItem('q1').includes('Signing')) {
-        chosen.dilithium.performance.sign   = 5;
+        chosen.mldsa.performance.sign   = 5;
         chosen.falcon.performance.sign      = 4;
-        chosen.sphincs.performance.sign     = 2;
+        chosen.sldsa.performance.sign     = 2;
         chosen.xmss.performance.sign        = 2;
     }
     if (sessionStorage.getItem('q1').includes('Verification')) {
-        chosen.dilithium.performance.ver    = 4;
+        chosen.mldsa.performance.ver    = 4;
         chosen.falcon.performance.ver       = 5;
-        chosen.sphincs.performance.ver      = 2;
+        chosen.sldsa.performance.ver      = 2;
         chosen.xmss.performance.ver         = 5;
     }
     if (sessionStorage.getItem('q1').includes('Key generation') || sessionStorage.getItem('q1').includes('Signing')) {
-        chosen.dilithium.size.sk    = 3;
+        chosen.mldsa.size.sk    = 3;
         chosen.falcon.size.sk       = 4;
-        chosen.sphincs.size.sk      = 5;
+        chosen.sldsa.size.sk      = 5;
         chosen.xmss.size.sk         = 2;
     }
     if (sessionStorage.getItem('q1').includes('Key generation') || sessionStorage.getItem('q1').includes('Verification')) {
-        chosen.dilithium.size.pk    = 3;
+        chosen.mldsa.size.pk    = 3;
         chosen.falcon.size.pk       = 4;
-        chosen.sphincs.size.pk      = 5;
+        chosen.sldsa.size.pk      = 5;
         chosen.xmss.size.pk         = 3;
     }
     if (sessionStorage.getItem('q1').includes('Signing') || sessionStorage.getItem('q1').includes('Verification')) {
-        chosen.dilithium.size.sig   = 4;
+        chosen.mldsa.size.sig   = 4;
         chosen.falcon.size.sig      = 5;
-        chosen.sphincs.size.sig     = 1;
+        chosen.sldsa.size.sig     = 1;
         chosen.xmss.size.sig        = 3;
     }
 
@@ -236,32 +236,32 @@ function question1() {
 }
 
 function question2() {
-    let scores2 = {dilithium: 3, falcon: 3, sphincs: 5, xmss: 5};
+    let scores2 = {mldsa: 3, falcon: 3, sldsa: 5, xmss: 5};
 
     // Include result from question 2
     if (sessionStorage.getItem('q2') > -1) {
-        scores2.dilithium = Math.round(3 - sessionStorage.getItem('q2') * 2 / 30);
+        scores2.mldsa = Math.round(3 - sessionStorage.getItem('q2') * 2 / 30);
         scores2.falcon = Math.round(3 - sessionStorage.getItem('q2') * 2 / 30);
     }
 
     // Include result from question 2 follow-up
     switch (sessionStorage.getItem('q2 (Follow-up)')) {
         case 'Yes':
-            scores2.dilithium = (scores2.dilithium + 4)/2;
+            scores2.mldsa = (scores2.mldsa + 4)/2;
             scores2.falcon = (scores2.falcon + 3)/2;
-            scores2.sphincs = (scores2.sphincs + 5)/2;
+            scores2.sldsa = (scores2.sldsa + 5)/2;
             scores2.xmss = (scores2.xmss + 5)/2;
             break;
         case 'No':
-            scores2.dilithium = (scores2.dilithium + 3)/2;
+            scores2.mldsa = (scores2.mldsa + 3)/2;
             scores2.falcon = (scores2.falcon + 3)/2;
-            scores2.sphincs = (scores2.sphincs + 3)/2;
+            scores2.sldsa = (scores2.sldsa + 3)/2;
             scores2.xmss = (scores2.xmss + 3)/2;
             break;
         default: // Don't know
-            scores2.dilithium = (scores2.dilithium + 3)/2;
+            scores2.mldsa = (scores2.mldsa + 3)/2;
             scores2.falcon = (scores2.falcon + 3)/2;
-            scores2.sphincs = (scores2.sphincs + 4)/2;
+            scores2.sldsa = (scores2.sldsa + 4)/2;
             scores2.xmss = (scores2.xmss + 4)/2;
     }
 
@@ -276,67 +276,67 @@ function question3() {
 
         switch (sessionStorage.getItem('q3-1')) {
             case 'Completely agree':
-                scores3.dilithium   = 1;
+                scores3.mldsa   = 1;
                 scores3.falcon      = 1;
-                scores3.sphincs     = 5;
+                scores3.sldsa     = 5;
                 scores3.xmss        = 5;
                 break;
             case 'Agree':
-                scores3.dilithium   = 2;
+                scores3.mldsa   = 2;
                 scores3.falcon      = 2;
-                scores3.sphincs     = 4;
+                scores3.sldsa     = 4;
                 scores3.xmss        = 4;
                 break;
             case 'Neutral':
-                scores3.dilithium   = 3;
+                scores3.mldsa   = 3;
                 scores3.falcon      = 3;
-                scores3.sphincs     = 3;
+                scores3.sldsa     = 3;
                 scores3.xmss        = 3;
                 break;
             case 'Disagree':
-                scores3.dilithium   = 4;
+                scores3.mldsa   = 4;
                 scores3.falcon      = 4;
-                scores3.sphincs     = 2;
+                scores3.sldsa     = 2;
                 scores3.xmss        = 2;
                 break;
             case 'Completely disagree':
-                scores3.dilithium   = 5;
+                scores3.mldsa   = 5;
                 scores3.falcon      = 5;
-                scores3.sphincs     = 1;
+                scores3.sldsa     = 1;
                 scores3.xmss        = 1;
                 break;
             default:
-                scores3.dilithium   = 0;
+                scores3.mldsa   = 0;
                 scores3.falcon      = 0;
-                scores3.sphincs     = 0;
+                scores3.sldsa     = 0;
                 scores3.xmss        = 0;
         }
 
         switch (sessionStorage.getItem('q3-3')) {
             case 'Yes':
-                scores3.dilithium   += 5;
+                scores3.mldsa   += 5;
                 scores3.falcon      += 5;
-                scores3.sphincs     += 1;
+                scores3.sldsa     += 1;
                 scores3.xmss        += 1;
                 break;
             case 'No':
-                scores3.dilithium   += 1;
+                scores3.mldsa   += 1;
                 scores3.falcon      += 1;
-                scores3.sphincs     += 5;
+                scores3.sldsa     += 5;
                 scores3.xmss        += 5;
                 break;
             default: // Don't know
-                scores3.dilithium   += 0;
+                scores3.mldsa   += 0;
                 scores3.falcon      += 0;
-                scores3.sphincs     += 0;
+                scores3.sldsa     += 0;
                 scores3.xmss        += 0;
         }
 
         // Normalise over subquestions if multiple were answered
         if (sessionStorage.getItem('q3-1') && sessionStorage.getItem('q3-3')) {
-            scores3.dilithium   /= 2;
+            scores3.mldsa   /= 2;
             scores3.falcon      /= 2;
-            scores3.sphincs     /= 2;
+            scores3.sldsa     /= 2;
             scores3.xmss        /= 2;
         }
 
@@ -344,39 +344,39 @@ function question3() {
         // Use answer of Question 3
         switch (sessionStorage.getItem('q3')) {
             case 'Completely agree':
-                scores3.dilithium   = 1;
+                scores3.mldsa   = 1;
                 scores3.falcon      = 1;
-                scores3.sphincs     = 5;
+                scores3.sldsa     = 5;
                 scores3.xmss        = 5;
                 break;
             case 'Agree':
-                scores3.dilithium   = 2;
+                scores3.mldsa   = 2;
                 scores3.falcon      = 2;
-                scores3.sphincs     = 4;
+                scores3.sldsa     = 4;
                 scores3.xmss        = 4;
                 break;
             case 'Neutral':
-                scores3.dilithium   = 3;
+                scores3.mldsa   = 3;
                 scores3.falcon      = 3;
-                scores3.sphincs     = 3;
+                scores3.sldsa     = 3;
                 scores3.xmss        = 3;
                 break;
             case 'Disagree':
-                scores3.dilithium   = 4;
+                scores3.mldsa   = 4;
                 scores3.falcon      = 4;
-                scores3.sphincs     = 2;
+                scores3.sldsa     = 2;
                 scores3.xmss        = 2;
                 break;
             case 'Completely disagree':
-                scores3.dilithium   = 5;
+                scores3.mldsa   = 5;
                 scores3.falcon      = 5;
-                scores3.sphincs     = 1;
+                scores3.sldsa     = 1;
                 scores3.xmss        = 1;
                 break;
             default:
-                scores3.dilithium   = 0;
+                scores3.mldsa   = 0;
                 scores3.falcon      = 0;
-                scores3.sphincs     = 0;
+                scores3.sldsa     = 0;
                 scores3.xmss        = 0;
         }
     }
@@ -385,43 +385,43 @@ function question3() {
 }
 
 function question4() {
-    let scores4 = {dilithium: 0, falcon: 0, sphincs: 0, xmss: 0};
+    let scores4 = {mldsa: 0, falcon: 0, sldsa: 0, xmss: 0};
 
     let numberOfAnswers = 0;
 
     if (sessionStorage.getItem('q4').includes('NIST')) {
-        scores4.dilithium   += 5;
+        scores4.mldsa   += 5;
         scores4.falcon      += 3;
-        scores4.sphincs     += 5;
+        scores4.sldsa     += 5;
         scores4.xmss        += 5;
         numberOfAnswers     += 1;
     }
 
     if (sessionStorage.getItem('q4').includes('ISO')) {
-        scores4.dilithium   += 0;
+        scores4.mldsa   += 0;
         scores4.falcon      += 0;
-        scores4.sphincs     += 0;
+        scores4.sldsa     += 0;
         scores4.xmss        += 0;
         numberOfAnswers     += 1;
     }
 
     if (sessionStorage.getItem('q4').includes('IETF')) {
-        scores4.dilithium   += 2;
+        scores4.mldsa   += 2;
         scores4.falcon      += 0;
-        scores4.sphincs     += 1;
+        scores4.sldsa     += 1;
         scores4.xmss        += 5;
         numberOfAnswers     += 1;
     }
     // If only Don't know or nothing is selected
     if (numberOfAnswers == 0) {
-        return {dilithium: 5, falcon: 3, sphincs: 4, xmss: 4};
+        return {mldsa: 5, falcon: 3, sldsa: 4, xmss: 4};
     }
 
     // Normalise over number of chosen standardisation bodies
     if (numberOfAnswers >= 1) {
-        scores4.dilithium   /= numberOfAnswers;
+        scores4.mldsa   /= numberOfAnswers;
         scores4.falcon      /= numberOfAnswers;
-        scores4.sphincs     /= numberOfAnswers;
+        scores4.sldsa     /= numberOfAnswers;
         scores4.xmss        /= numberOfAnswers;
     }
 
@@ -430,7 +430,7 @@ function question4() {
 
 function question5() {
 
-    let scores5 = {dilithium: 0, falcon: 0, sphincs: 0, xmss: 0};
+    let scores5 = {mldsa: 0, falcon: 0, sldsa: 0, xmss: 0};
 
     let numberOfAnswers = 0;
 
@@ -438,32 +438,32 @@ function question5() {
         // Use answer of question 5-1
         if (sessionStorage.getItem('q5-1')) {
             if (sessionStorage.getItem('q5-1').includes('Hash function calls')) {
-                scores5.dilithium   += 3;
+                scores5.mldsa   += 3;
                 scores5.falcon      += 3;
-                scores5.sphincs     += 5;
+                scores5.sldsa     += 5;
                 scores5.xmss        += 5;
                 numberOfAnswers     += 1;
             }
             if (sessionStorage.getItem('q5-1').includes('Polynomial operations')) {
-                scores5.dilithium   += 4;
+                scores5.mldsa   += 4;
                 scores5.falcon      += 4;
-                scores5.sphincs     += 0;
+                scores5.sldsa     += 0;
                 scores5.xmss        += 0;
                 numberOfAnswers     += 1;
             }
             if (numberOfAnswers == 0 && sessionStorage.getItem('q5').includes("Don't know")) {
-                scores5.dilithium   += 3;
+                scores5.mldsa   += 3;
                 scores5.falcon      += 3;
-                scores5.sphincs     += 1;
+                scores5.sldsa     += 1;
                 scores5.xmss        += 1;
                 numberOfAnswers     += 1;
             }
 
             // Normalise over number of chosen standardisation bodies
             if (numberOfAnswers >= 1) {
-                scores5.dilithium   /= numberOfAnswers;
+                scores5.mldsa   /= numberOfAnswers;
                 scores5.falcon      /= numberOfAnswers;
-                scores5.sphincs     /= numberOfAnswers;
+                scores5.sldsa     /= numberOfAnswers;
                 scores5.xmss        /= numberOfAnswers;
             }
             numberOfAnswers = 1;
@@ -471,21 +471,21 @@ function question5() {
         if (sessionStorage.getItem('q5-2')) {
             switch (sessionStorage.getItem('q5-2')) {
                 case 'Yes':
-                    scores5.dilithium   += 3;
+                    scores5.mldsa   += 3;
                     scores5.falcon      += 5;
-                    scores5.sphincs     += 3;
+                    scores5.sldsa     += 3;
                     scores5.xmss        += 3;
                     break;
                 case 'No':
-                    scores5.dilithium   += 3;
+                    scores5.mldsa   += 3;
                     scores5.falcon      += 0;
-                    scores5.sphincs     += 3;
+                    scores5.sldsa     += 3;
                     scores5.xmss        += 3;
                     break;
                 case "Don't know":
-                    scores5.dilithium   += 3;
+                    scores5.mldsa   += 3;
                     scores5.falcon      += 1;
-                    scores5.sphincs     += 3;
+                    scores5.sldsa     += 3;
                     scores5.xmss        += 3;
                     break;
             }
@@ -495,59 +495,59 @@ function question5() {
     } else if (sessionStorage.getItem('q5')) {
         // Use answer of question 5
         if (sessionStorage.getItem('q5').includes('Laptop (or higher performance)')) {
-            scores5.dilithium   += 5;
+            scores5.mldsa   += 5;
             scores5.falcon      += 5;
-            scores5.sphincs     += 5;
+            scores5.sldsa     += 5;
             scores5.xmss        += 5;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q5').includes('Smart phone')) {
-            scores5.dilithium   += 5;
+            scores5.mldsa   += 5;
             scores5.falcon      += 5;
-            scores5.sphincs     += 5;
+            scores5.sldsa     += 5;
             scores5.xmss        += 4;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q5').includes('IoT device')) {
-            scores5.dilithium   += 4;
+            scores5.mldsa   += 4;
             scores5.falcon      += 3;
-            scores5.sphincs     += 4;
+            scores5.sldsa     += 4;
             scores5.xmss        += 3;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q5').includes('Smart card')) {
-            scores5.dilithium   += 3;
+            scores5.mldsa   += 3;
             scores5.falcon      += 3;
-            scores5.sphincs     += 0;
+            scores5.sldsa     += 0;
             scores5.xmss        += 0;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q5').includes('Sensor')) {
-            scores5.dilithium   += 2;
+            scores5.mldsa   += 2;
             scores5.falcon      += 3;
-            scores5.sphincs     += 1;
+            scores5.sldsa     += 1;
             scores5.xmss        += 0;
             numberOfAnswers     += 1;
         }
         if (numberOfAnswers == 0 && sessionStorage.getItem('q5').includes("Don't know")) {
-            scores5.dilithium   += 5;
+            scores5.mldsa   += 5;
             scores5.falcon      += 5;
-            scores5.sphincs     += 2;
+            scores5.sldsa     += 2;
             scores5.xmss        += 0;
             numberOfAnswers     += 1;
         }
 
     } else {
         // Nothing is selected in question 5 or 5-1
-        scores5 = {dilithium: 5, falcon: 5, sphincs: 2, xmss: 0};
+        scores5 = {mldsa: 5, falcon: 5, sldsa: 2, xmss: 0};
         numberOfAnswers += 1;
     }
 
     // Normalise over number of chosen standardisation bodies
     if (numberOfAnswers >= 1) {
-        scores5.dilithium   /= numberOfAnswers;
+        scores5.mldsa   /= numberOfAnswers;
         scores5.falcon      /= numberOfAnswers;
-        scores5.sphincs     /= numberOfAnswers;
+        scores5.sldsa     /= numberOfAnswers;
         scores5.xmss        /= numberOfAnswers;
     }
 
@@ -557,17 +557,17 @@ function question5() {
 function question6() {
     switch (sessionStorage.getItem('q6')) {
         case 'Completely agree':
-            return {dilithium: 5, falcon: 5, sphincs: 5, xmss: 5};
+            return {mldsa: 5, falcon: 5, sldsa: 5, xmss: 5};
         case 'Agree':
-            return {dilithium: 5, falcon: 5, sphincs: 4, xmss: 3};
+            return {mldsa: 5, falcon: 5, sldsa: 4, xmss: 3};
         case 'Neutral':
-            return {dilithium: 4, falcon: 4, sphincs: 3, xmss: 2};
+            return {mldsa: 4, falcon: 4, sldsa: 3, xmss: 2};
         case 'Disagree':
-            return {dilithium: 3, falcon: 3, sphincs: 2, xmss: 1};
+            return {mldsa: 3, falcon: 3, sldsa: 2, xmss: 1};
         case 'Completely disagree':
-            return {dilithium: 2, falcon: 2, sphincs: 1, xmss: 1};
+            return {mldsa: 2, falcon: 2, sldsa: 1, xmss: 1};
         default:
-            return {dilithium: 0, falcon: 0, sphincs: 0, xmss: 0};
+            return {mldsa: 0, falcon: 0, sldsa: 0, xmss: 0};
     }
 }
 
@@ -613,48 +613,48 @@ function averageSizes(size) {
 }
 
 function question7(chosen) {
-    let scores7 = {dilithium: 0, falcon: 0, sphincs: 0, xmss: 0};
-    if (!chosen.dilithium.size) {
+    let scores7 = {mldsa: 0, falcon: 0, sldsa: 0, xmss: 0};
+    if (!chosen.mldsa.size) {
         // No sizes were chosen in question 1
         return scores7;
     }
-    averages = {dilithium: averageSizes(chosen.dilithium.size), falcon: averageSizes(chosen.falcon.size), sphincs: averageSizes(chosen.sphincs.size), xmss: averageSizes(chosen.xmss.size)};
+    averages = {mldsa: averageSizes(chosen.mldsa.size), falcon: averageSizes(chosen.falcon.size), sldsa: averageSizes(chosen.sldsa.size), xmss: averageSizes(chosen.xmss.size)};
 
     if (sessionStorage.getItem('q7')) {
         // Use answer to question 7
-        scores7.dilithium = Math.round(averages.dilithium.all);
+        scores7.mldsa = Math.round(averages.mldsa.all);
         scores7.falcon = Math.round(averages.falcon.all);
-        scores7.sphincs = Math.round(averages.sphincs.all);
+        scores7.sldsa = Math.round(averages.sldsa.all);
         scores7.xmss = Math.round(averages.xmss.all);
         switch (sessionStorage.getItem('q7')) {
             case 'Completely agree':
-                scores7.dilithium = Math.max(0, scores7.dilithium);
+                scores7.mldsa = Math.max(0, scores7.mldsa);
                 scores7.falcon = Math.max(0, scores7.falcon);
-                scores7.sphincs = Math.max(0, scores7.sphincs);
+                scores7.sldsa = Math.max(0, scores7.sldsa);
                 scores7.xmss = Math.max(0, scores7.xmss);
                 break;
             case 'Agree':
-                scores7.dilithium = Math.max(0, scores7.dilithium - 1);
+                scores7.mldsa = Math.max(0, scores7.mldsa - 1);
                 scores7.falcon = Math.max(0, scores7.falcon - 1);
-                scores7.sphincs = Math.max(0, scores7.sphincs - 1);
+                scores7.sldsa = Math.max(0, scores7.sldsa - 1);
                 scores7.xmss = Math.max(0, scores7.xmss - 1);
                 break;
             case 'Neutral':
-                scores7.dilithium = Math.max(0, scores7.dilithium - 2);
+                scores7.mldsa = Math.max(0, scores7.mldsa - 2);
                 scores7.falcon = Math.max(0, scores7.falcon - 2);
-                scores7.sphincs = Math.max(0, scores7.sphincs - 2);
+                scores7.sldsa = Math.max(0, scores7.sldsa - 2);
                 scores7.xmss = Math.max(0, scores7.xmss - 2);
                 break;
             case 'Disagree':
-                scores7.dilithium = Math.max(0, scores7.dilithium - 3);
+                scores7.mldsa = Math.max(0, scores7.mldsa - 3);
                 scores7.falcon = Math.max(0, scores7.falcon - 3);
-                scores7.sphincs = Math.max(0, scores7.sphincs - 3);
+                scores7.sldsa = Math.max(0, scores7.sldsa - 3);
                 scores7.xmss = Math.max(0, scores7.xmss - 3);
                 break;
             case 'Completely disagree':
-                scores7.dilithium = Math.max(0, scores7.dilithium - 4);
+                scores7.mldsa = Math.max(0, scores7.mldsa - 4);
                 scores7.falcon = Math.max(0, scores7.falcon - 4);
-                scores7.sphincs = Math.max(0, scores7.sphincs - 4);
+                scores7.sldsa = Math.max(0, scores7.sldsa - 4);
                 scores7.xmss = Math.max(0, scores7.xmss - 4);
                 break;
         }
@@ -663,54 +663,54 @@ function question7(chosen) {
         let numberOfAnswers = 0;
 
         // Question 7-1
-        if (sessionStorage.getItem('q7-1') > -1 && averages.dilithium.withoutSk > -1) {
-            scores7.dilithium = Math.round((5 - averages.dilithium.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.dilithium.withoutSk);
+        if (sessionStorage.getItem('q7-1') > -1 && averages.mldsa.withoutSk > -1) {
+            scores7.mldsa = Math.round((5 - averages.mldsa.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.mldsa.withoutSk);
             scores7.falcon = Math.round((5 - averages.falcon.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.falcon.withoutSk);
-            scores7.sphincs = Math.round((5 - averages.sphincs.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.sphincs.withoutSk);
+            scores7.sldsa = Math.round((5 - averages.sldsa.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.sldsa.withoutSk);
             scores7.xmss = Math.round((5 - averages.xmss.withoutSk)/100 * sessionStorage.getItem('q7-1') + averages.xmss.withoutSk);
             numberOfAnswers += 1
-        } else if (averages.dilithium.withoutSk > -1) {
-            scores7.dilithium = Math.max(0, Math.round(averages.dilithium.withoutSk) - 2);
+        } else if (averages.mldsa.withoutSk > -1) {
+            scores7.mldsa = Math.max(0, Math.round(averages.mldsa.withoutSk) - 2);
             scores7.falcon = Math.max(0, Math.round(averages.falcon.withoutSk) - 2);
-            scores7.sphincs = Math.max(0, Math.round(averages.sphincs.withoutSk) - 2);
+            scores7.sldsa = Math.max(0, Math.round(averages.sldsa.withoutSk) - 2);
             scores7.xmss = Math.max(0, Math.round(averages.xmss.withoutSk) - 2);
             numberOfAnswers += 1;
         }
 
         // Question 7-2
         if (sessionStorage.getItem('q7-2') > -1) {
-            scores7.dilithium += Math.round((5 - averages.dilithium.all)/100 * sessionStorage.getItem('q7-2') + averages.dilithium.all);
+            scores7.mldsa += Math.round((5 - averages.mldsa.all)/100 * sessionStorage.getItem('q7-2') + averages.mldsa.all);
             scores7.falcon += Math.round((5 - averages.falcon.all)/100 * sessionStorage.getItem('q7-2') + averages.falcon.all);
-            scores7.sphincs += Math.round((5 - averages.sphincs.all)/100 * sessionStorage.getItem('q7-2') + averages.sphincs.all);
+            scores7.sldsa += Math.round((5 - averages.sldsa.all)/100 * sessionStorage.getItem('q7-2') + averages.sldsa.all);
             scores7.xmss += Math.round((5 - averages.xmss.all)/100 * sessionStorage.getItem('q7-2') + averages.xmss.all);
             numberOfAnswers += 1
         } else {
-            scores7.dilithium += Math.max(0, Math.round(averages.dilithium.all) - 2);
+            scores7.mldsa += Math.max(0, Math.round(averages.mldsa.all) - 2);
             scores7.falcon += Math.max(0, Math.round(averages.falcon.all) - 2);
-            scores7.sphincs += Math.max(0, Math.round(averages.sphincs.all) - 2);
+            scores7.sldsa += Math.max(0, Math.round(averages.sldsa.all) - 2);
             scores7.xmss += Math.max(0, Math.round(averages.xmss.all) - 2);
             numberOfAnswers += 1;
         }
 
         // Question 7-3
-        if (sessionStorage.getItem('q7-3') > -1 && averages.dilithium.withoutSig > -1) {
-            scores7.dilithium += Math.round((5 - averages.dilithium.withoutSig)/100 * sessionStorage.getItem('q7-3') + averages.dilithium.withoutSig);
+        if (sessionStorage.getItem('q7-3') > -1 && averages.mldsa.withoutSig > -1) {
+            scores7.mldsa += Math.round((5 - averages.mldsa.withoutSig)/100 * sessionStorage.getItem('q7-3') + averages.mldsa.withoutSig);
             scores7.falcon += Math.round((5 - averages.falcon.withoutSig)/100 * sessionStorage.getItem('q7-3') + averages.falcon.withoutSig);
-            scores7.sphincs += Math.round((5 - averages.sphincs.withoutSig)/100 * sessionStorage.getItem('q7-3') + averages.sphincs.withoutSig);
+            scores7.sldsa += Math.round((5 - averages.sldsa.withoutSig)/100 * sessionStorage.getItem('q7-3') + averages.sldsa.withoutSig);
             scores7.xmss += Math.round((5 - averages.xmss.withoutSig)/100 * sessionStorage.getItem('q7-3') + averages.xmss.withoutSig);
             numberOfAnswers += 1
-        } else if (averages.dilithium.withoutSig > -1) {
-            scores7.dilithium += Math.max(0, Math.round(averages.dilithium.withoutSig) - 2);
+        } else if (averages.mldsa.withoutSig > -1) {
+            scores7.mldsa += Math.max(0, Math.round(averages.mldsa.withoutSig) - 2);
             scores7.falcon += Math.max(0, Math.round(averages.falcon.withoutSig) - 2);
-            scores7.sphincs += Math.max(0, Math.round(averages.sphincs.withoutSig) - 2);
+            scores7.sldsa += Math.max(0, Math.round(averages.sldsa.withoutSig) - 2);
             scores7.xmss += Math.max(0, Math.round(averages.xmss.withoutSig) - 2);
             numberOfAnswers += 1;
         }
 
         if (numberOfAnswers >= 1) {
-            scores7.dilithium   /= numberOfAnswers;
+            scores7.mldsa   /= numberOfAnswers;
             scores7.falcon      /= numberOfAnswers;
-            scores7.sphincs     /= numberOfAnswers;
+            scores7.sldsa     /= numberOfAnswers;
             scores7.xmss        /= numberOfAnswers;
         }
 
@@ -762,48 +762,48 @@ function averagePerformances(performance, size) {
 }
 
 function question8(chosen) {
-    let scores8 = {dilithium: 0, falcon: 0, sphincs: 0, xmss: 0};
-    if (!chosen.dilithium.size) {
+    let scores8 = {mldsa: 0, falcon: 0, sldsa: 0, xmss: 0};
+    if (!chosen.mldsa.size) {
         // No sizes were chosen in question 1
         return scores8;
     }
-    averages = {dilithium: averagePerformances(chosen.dilithium.performance, chosen.dilithium.size), falcon: averagePerformances(chosen.falcon.performance, chosen.falcon.size), sphincs: averagePerformances(chosen.sphincs.performance, chosen.sphincs.size), xmss: averagePerformances(chosen.xmss.performance, chosen.xmss.size)};
+    averages = {mldsa: averagePerformances(chosen.mldsa.performance, chosen.mldsa.size), falcon: averagePerformances(chosen.falcon.performance, chosen.falcon.size), sldsa: averagePerformances(chosen.sldsa.performance, chosen.sldsa.size), xmss: averagePerformances(chosen.xmss.performance, chosen.xmss.size)};
 
     if (sessionStorage.getItem('q8')) {
         // Use answer to question 8
-        scores8.dilithium = Math.round(averages.dilithium.all);
+        scores8.mldsa = Math.round(averages.mldsa.all);
         scores8.falcon = Math.round(averages.falcon.all);
-        scores8.sphincs = Math.round(averages.sphincs.all);
+        scores8.sldsa = Math.round(averages.sldsa.all);
         scores8.xmss = Math.round(averages.xmss.all);
         switch (sessionStorage.getItem('q8')) {
             case 'Completely agree':
-                scores8.dilithium = Math.max(0, scores8.dilithium);
+                scores8.mldsa = Math.max(0, scores8.mldsa);
                 scores8.falcon = Math.max(0, scores8.falcon);
-                scores8.sphincs = Math.max(0, scores8.sphincs);
+                scores8.sldsa = Math.max(0, scores8.sldsa);
                 scores8.xmss = Math.max(0, scores8.xmss);
                 break;
             case 'Agree':
-                scores8.dilithium = Math.max(0, scores8.dilithium - 1);
+                scores8.mldsa = Math.max(0, scores8.mldsa - 1);
                 scores8.falcon = Math.max(0, scores8.falcon - 1);
-                scores8.sphincs = Math.max(0, scores8.sphincs - 1);
+                scores8.sldsa = Math.max(0, scores8.sldsa - 1);
                 scores8.xmss = Math.max(0, scores8.xmss - 1);
                 break;
             case 'Neutral':
-                scores8.dilithium = Math.max(0, scores8.dilithium - 2);
+                scores8.mldsa = Math.max(0, scores8.mldsa - 2);
                 scores8.falcon = Math.max(0, scores8.falcon - 2);
-                scores8.sphincs = Math.max(0, scores8.sphincs - 2);
+                scores8.sldsa = Math.max(0, scores8.sldsa - 2);
                 scores8.xmss = Math.max(0, scores8.xmss - 2);
                 break;
             case 'Disagree':
-                scores8.dilithium = Math.max(0, scores8.dilithium - 3);
+                scores8.mldsa = Math.max(0, scores8.mldsa - 3);
                 scores8.falcon = Math.max(0, scores8.falcon - 3);
-                scores8.sphincs = Math.max(0, scores8.sphincs - 3);
+                scores8.sldsa = Math.max(0, scores8.sldsa - 3);
                 scores8.xmss = Math.max(0, scores8.xmss - 3);
                 break;
             case 'Completely disagree':
-                scores8.dilithium = Math.max(0, scores8.dilithium - 4);
+                scores8.mldsa = Math.max(0, scores8.mldsa - 4);
                 scores8.falcon = Math.max(0, scores8.falcon - 4);
-                scores8.sphincs = Math.max(0, scores8.sphincs - 4);
+                scores8.sldsa = Math.max(0, scores8.sldsa - 4);
                 scores8.xmss = Math.max(0, scores8.xmss - 4);
                 break;
         }
@@ -812,39 +812,39 @@ function question8(chosen) {
         let numberOfAnswers = 0;
 
         // Question 8-1
-        if (sessionStorage.getItem('q8-1') > -1 && averages.dilithium.withoutSk > -1) {
-            scores8.dilithium = Math.round((5 - averages.dilithium.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.dilithium.withoutSk);
+        if (sessionStorage.getItem('q8-1') > -1 && averages.mldsa.withoutSk > -1) {
+            scores8.mldsa = Math.round((5 - averages.mldsa.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.mldsa.withoutSk);
             scores8.falcon = Math.round((5 - averages.falcon.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.falcon.withoutSk);
-            scores8.sphincs = Math.round((5 - averages.sphincs.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.sphincs.withoutSk);
+            scores8.sldsa = Math.round((5 - averages.sldsa.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.sldsa.withoutSk);
             scores8.xmss = Math.round((5 - averages.xmss.withoutSk)/1000 * sessionStorage.getItem('q8-1') + averages.xmss.withoutSk);
             numberOfAnswers += 1
-        } else if (averages.dilithium.withoutSk > -1) {
-            scores8.dilithium = Math.max(0, Math.round(averages.dilithium.withoutSk) - 2);
+        } else if (averages.mldsa.withoutSk > -1) {
+            scores8.mldsa = Math.max(0, Math.round(averages.mldsa.withoutSk) - 2);
             scores8.falcon = Math.max(0, Math.round(averages.falcon.withoutSk) - 2);
-            scores8.sphincs = Math.max(0, Math.round(averages.sphincs.withoutSk) - 2);
+            scores8.sldsa = Math.max(0, Math.round(averages.sldsa.withoutSk) - 2);
             scores8.xmss = Math.max(0, Math.round(averages.xmss.withoutSk) - 2);
             numberOfAnswers += 1;
         }
 
         // Question 8-2
         if (sessionStorage.getItem('q8-2') > -1) {
-            scores8.dilithium += Math.round((5 - averages.dilithium.all)/1000 * sessionStorage.getItem('q8-2') + averages.dilithium.all);
+            scores8.mldsa += Math.round((5 - averages.mldsa.all)/1000 * sessionStorage.getItem('q8-2') + averages.mldsa.all);
             scores8.falcon += Math.round((5 - averages.falcon.all)/1000 * sessionStorage.getItem('q8-2') + averages.falcon.all);
-            scores8.sphincs += Math.round((5 - averages.sphincs.all)/1000 * sessionStorage.getItem('q8-2') + averages.sphincs.all);
+            scores8.sldsa += Math.round((5 - averages.sldsa.all)/1000 * sessionStorage.getItem('q8-2') + averages.sldsa.all);
             scores8.xmss += Math.round((5 - averages.xmss.all)/1000 * sessionStorage.getItem('q8-2') + averages.xmss.all);
             numberOfAnswers += 1;
         } else {
-            scores8.dilithium += Math.max(0, Math.round(averages.dilithium.all) - 2);
+            scores8.mldsa += Math.max(0, Math.round(averages.mldsa.all) - 2);
             scores8.falcon += Math.max(0, Math.round(averages.falcon.all) - 2);
-            scores8.sphincs += Math.max(0, Math.round(averages.sphincs.all) - 2);
+            scores8.sldsa += Math.max(0, Math.round(averages.sldsa.all) - 2);
             scores8.xmss += Math.max(0, Math.round(averages.xmss.all) - 2);
             numberOfAnswers += 1;
         }
 
         if (numberOfAnswers >= 1) {
-            scores8.dilithium   /= numberOfAnswers;
+            scores8.mldsa   /= numberOfAnswers;
             scores8.falcon      /= numberOfAnswers;
-            scores8.sphincs     /= numberOfAnswers;
+            scores8.sldsa     /= numberOfAnswers;
             scores8.xmss        /= numberOfAnswers;
         }
 
@@ -855,37 +855,37 @@ function question8(chosen) {
 
 function question9() {
 
-    let scores9 = {dilithium: 0, falcon: 0, sphincs: 0, xmss: 0};
+    let scores9 = {mldsa: 0, falcon: 0, sldsa: 0, xmss: 0};
 
     let numberOfAnswers = 0;
 
     if (sessionStorage.getItem('q9-1')) {
         // Use answer of question 9-1
         if (sessionStorage.getItem('q9-1').includes('Signing')) {
-            scores9.dilithium   += 5;
+            scores9.mldsa   += 5;
             scores9.falcon      += 1;
-            scores9.sphincs     += 5;
+            scores9.sldsa     += 5;
             scores9.xmss        += 5;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q9-1').includes('Verification')) {
-            scores9.dilithium   += 5;
+            scores9.mldsa   += 5;
             scores9.falcon      += 5;
-            scores9.sphincs     += 5;
+            scores9.sldsa     += 5;
             scores9.xmss        += 5;
             numberOfAnswers     += 1;
         }
         if (sessionStorage.getItem('q9-1').includes('Key generation')) {
-            scores9.dilithium   += 5;
+            scores9.mldsa   += 5;
             scores9.falcon      += 1;
-            scores9.sphincs     += 5;
+            scores9.sldsa     += 5;
             scores9.xmss        += 5;
             numberOfAnswers     += 1;
         }
         if (numberOfAnswers == 0) {
-            scores9.dilithium   += 5;
+            scores9.mldsa   += 5;
             scores9.falcon      += 1;
-            scores9.sphincs     += 5;
+            scores9.sldsa     += 5;
             scores9.xmss        += 5;
             numberOfAnswers     += 1;
         }
@@ -893,17 +893,17 @@ function question9() {
         // Use answer of question 9
         switch (sessionStorage.getItem('q9')) {
             case 'Yes':
-                scores9.dilithium   = 5;
+                scores9.mldsa   = 5;
                 scores9.falcon      = 1;
-                scores9.sphincs     = 5;
+                scores9.sldsa     = 5;
                 scores9.xmss        = 5;
                 break;
             case 'No':
                 break;
             default:
-                scores9.dilithium   = 5;
+                scores9.mldsa   = 5;
                 scores9.falcon      = 1;
-                scores9.sphincs     = 5;
+                scores9.sldsa     = 5;
                 scores9.xmss        = 5;
         }
 
@@ -912,9 +912,9 @@ function question9() {
 
     // Normalise over number of chosen answers
     if (numberOfAnswers >= 1) {
-        scores9.dilithium   /= numberOfAnswers;
+        scores9.mldsa   /= numberOfAnswers;
         scores9.falcon      /= numberOfAnswers;
-        scores9.sphincs     /= numberOfAnswers;
+        scores9.sldsa     /= numberOfAnswers;
         scores9.xmss        /= numberOfAnswers;
     }
 
@@ -929,9 +929,9 @@ function question10() {
 }
 
 function calculateScores() {
-    let dilithiumScore = 0;
+    let mldsaScore = 0;
     let falconScore = 0;
-    let sphincsScore = 0;
+    let sldsaScore = 0;
     let xmssScore = 0;
 
     let maxScore = 40;
@@ -946,9 +946,9 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    dilithiumScore += factor * scores2.dilithium;
+    mldsaScore += factor * scores2.mldsa;
     falconScore += factor * scores2.falcon;
-    sphincsScore += factor * scores2.sphincs;
+    sldsaScore += factor * scores2.sldsa;
     xmssScore += factor * scores2.xmss;
 
     // Question 3
@@ -958,9 +958,9 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    dilithiumScore += factor * scores3.dilithium;
+    mldsaScore += factor * scores3.mldsa;
     falconScore += factor * scores3.falcon;
-    sphincsScore += factor * scores3.sphincs;
+    sldsaScore += factor * scores3.sldsa;
     xmssScore += factor * scores3.xmss;
 
     // Question 4
@@ -970,9 +970,9 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    dilithiumScore += factor * scores4.dilithium;
+    mldsaScore += factor * scores4.mldsa;
     falconScore += factor * scores4.falcon;
-    sphincsScore += factor * scores4.sphincs;
+    sldsaScore += factor * scores4.sldsa;
     xmssScore += factor * scores4.xmss;
 
     // Question 5
@@ -982,9 +982,9 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    dilithiumScore += factor * scores5.dilithium;
+    mldsaScore += factor * scores5.mldsa;
     falconScore += factor * scores5.falcon;
-    sphincsScore += factor * scores5.sphincs;
+    sldsaScore += factor * scores5.sldsa;
     xmssScore += factor * scores5.xmss;
 
     // Question 6
@@ -994,9 +994,9 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    dilithiumScore += factor * scores6.dilithium;
+    mldsaScore += factor * scores6.mldsa;
     falconScore += factor * scores6.falcon;
-    sphincsScore += factor * scores6.sphincs;
+    sldsaScore += factor * scores6.sldsa;
     xmssScore += factor * scores6.xmss;
 
     // Question 7
@@ -1006,9 +1006,9 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    dilithiumScore += factor * scores7.dilithium;
+    mldsaScore += factor * scores7.mldsa;
     falconScore += factor * scores7.falcon;
-    sphincsScore += factor * scores7.sphincs;
+    sldsaScore += factor * scores7.sldsa;
     xmssScore += factor * scores7.xmss;
 
     // Question 8
@@ -1018,9 +1018,9 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    dilithiumScore += factor * scores8.dilithium;
+    mldsaScore += factor * scores8.mldsa;
     falconScore += factor * scores8.falcon;
-    sphincsScore += factor * scores8.sphincs;
+    sldsaScore += factor * scores8.sldsa;
     xmssScore += factor * scores8.xmss;
 
     // Question 9
@@ -1030,23 +1030,23 @@ function calculateScores() {
         factor = 2;
         maxScore += 5;
     }
-    dilithiumScore += factor * scores9.dilithium;
+    mldsaScore += factor * scores9.mldsa;
     falconScore += factor * scores9.falcon;
-    sphincsScore += factor * scores9.sphincs;
+    sldsaScore += factor * scores9.sldsa;
     xmssScore += factor * scores9.xmss;
 
     // Question 10
     xmssScore = xmssScore * question10();
 
     // Normalise to range 0-100
-    dilithiumScore = Math.round(dilithiumScore / maxScore * 100);
+    mldsaScore = Math.round(mldsaScore / maxScore * 100);
     falconScore = Math.round(falconScore / maxScore * 100);
-    sphincsScore = Math.round(sphincsScore / maxScore * 100);
+    sldsaScore = Math.round(sldsaScore / maxScore * 100);
     xmssScore = Math.round(xmssScore / maxScore * 100)
 
     //  Question 11 has been implemented with the factors above
 
-    let scores = {"Dilithium": dilithiumScore, "Falcon": falconScore, "Sphincs+": sphincsScore, "XMSS": xmssScore};
+    let scores = {"ML-DSA": mldsaScore, "Falcon": falconScore, "SL-DSA": sldsaScore, "XMSS": xmssScore};
     const sortedScores = Object.fromEntries(Object.entries(scores).sort(([, value1], [, value2]) => value2 - value1));
 
     return sortedScores;
@@ -1055,11 +1055,11 @@ function calculateScores() {
 function adviceSecurityLevel() {
     switch (sessionStorage.getItem('q3-2')) {
         case '128 bits - NIST level 1 - 3072 bit RSA keys - 256 bit ECC keys':
-            return 'Dilithium2, Falcon-512, Sphincs+-128 or XMSS-256';
+            return 'ML-DSA-2, Falcon-512, SL-DSA-128 or XMSS-256';
         case '192 bits - NIST level 3 - 7680 bit RSA keys - 384 bit ECC keys':
-            return 'Dilithium3, Sphincs+-192 or XMSS-256';
+            return 'ML-DSA-3, SL-DSA-192 or XMSS-256';
         case '256 bits - NIST level 5 - 15360 bit RSA keys - 521 bit ECC keys':
-            return 'Dilithium5, Falcon-1024, Sphincs+-256 or XMSS-256';
+            return 'ML-DSA-5, Falcon-1024, SL-DSA-256 or XMSS-256';
         default:
             return false;
     }
@@ -1079,6 +1079,15 @@ div.innerHTML += '<br><h4>Your scores are as follows:</h4><br>';
 
 for (const scheme in scores) {
     div.innerHTML += `<h3><center>${scheme}: ${scores[scheme]}</center></h3>`;
+}
+
+// Print advice basend on answer of question 4 (standardizations)
+if (sessionStorage.getItem('q4') == 'NIST') {
+    div.innerHTML += `<br><p>⚠️ Note: Based on your answer to question 4, you are bound by standardization. NIST is currently in the process of standardizing ML-DSA, SL-DSA and Falcon. NIST has also published a recommendation for XMSS.</p>`;
+}
+
+if (sessionStorage.getItem('q4') == 'IETF') {
+    div.innerHTML += `<br><p>⚠️ Note: Based on your answer to question 4, you are bound by standardization. IETF has published an RFC for XMSS.</p>`;
 }
 
 // Print advice basend on answer of question 2 follow-up

@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PQChoiceAssistant</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -32,14 +33,16 @@
                     candidate schemes along with brief advantages and drawbacks of the schemes.
                     Below that, an explanation of the scoring method is also available.</p>
                 <br>
-
+                Independently of your answers, we advise to use PQC algorithms in <div class="tooltip">hybrid mode<span class="tooltiptext">Usage of classical and post-quantum cryptography together</span></div> when possible.
+                <br><br>
+    
                 <script src="javascript/dssCalculateScores.js"></script>
 
                 <br><br><br>
                 <h3>Pros and cons of the schemes</h3>
                 <br>
 
-                <p><u>Dilithium</u></p>
+                <p><u>ML-DSA</u></p>
                 <p>+ Fast key generation and signing, relatively small signatures</p>
                 <p>- Module lattice may potentially introduce vulnerabilities</p>
                 <br>
@@ -49,7 +52,7 @@
                 <p>- Design makes it difficult to put side-channel countermeasures in place, module lattice may potentially introduce vulnerabilities</p>
                 <br>
 
-                <p><u>SPHINCS+</u></p>
+                <p><u>SL-DSA</u></p>
                 <p>+ Established high security, based on simple and strong assumptions, small public key</p>
                 <p>- Large signatures and slower performance, especially when signing</p>
                 <br>
