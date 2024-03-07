@@ -813,25 +813,13 @@ function calculateScores() {
 
     //  Question 9 has been implemented with the factors above
     
-    console.log(scores2, scores3, scores4, scores5, scores6, scores7, scores8)
-
-    // Unanswered main questions lead to lower possible max score
-    questions.forEach(question => {
-        let ans = sessionStorage.getItem(question.name);
-        if (question.name!=='q9' && question.name.indexOf('-')===-1 && (ans==='' || ans==='-1')) {
-            maxScore -= 5;
-        }
-    });
-    
     // Normalise to range 0-100
     mlkemScore = Math.round(mlkemScore / maxScore * 100);
     frodokemScore = Math.round(frodokemScore / maxScore * 100);
     mcelieceScore = Math.round(mcelieceScore / maxScore * 100);
-    console.log(mlkemScore, frodokemScore, mcelieceScore, maxScore);
 
     let scores = {"ML-KEM": mlkemScore, "FrodoKEM": frodokemScore, "McEliece": mcelieceScore};
     const sortedScores = Object.fromEntries(Object.entries(scores).sort(([, value1], [, value2]) => value2 - value1));
-    console.log(sortedScores);
 
     return sortedScores;
 }

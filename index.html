@@ -31,7 +31,7 @@
                 <br>
                 <p>Welcome to the <strong>PQChoiceAssistant!</strong></p>
                 <p>Here you can get advice on the feasibility of various post-quantum cryptographic algorithms in your use-case.</p>
-                <p>We currently support Key Encapsulation Mechanism (KEM) and Digital Signature Scheme (DSS) algorithms.</p>
+                <p>We make a distinction between Key Encapsulation Mechanism (KEM) and Digital Signature Scheme (DSS) algorithms. Currently, we support the Crystals-Kyber, ClassicMcEliece and FrodoKEM as KEMs, and Falcon, Crystals-Dilithium, XMSS and SPHINCs+ as DSSes. These are the most prominent candidates, as they are either accepted as a NIST standard or have governmental support.</p>
                 <p>By answering relevant questions about your situation,
                     you are able to see recommendations on the most well-suited option.</p>
 
@@ -49,19 +49,12 @@
                 <br>
                 <p>The PQChoiceAssistant is a tool developed by TNO and CWI,
                     with the support of Fox Crypto, NXP, Technolution and Compumatica.
-                    The Dutch governmental organization NBV (Nationaal Bureau voor Verbindingsbeveiliging)
+                    The Dutch governmental organisation NBV (Nationaal Bureau voor Verbindingsbeveiliging)
                     has also provided support as well as funding.</p>
                 <br>
-                <p>The tool is an extension to the <a href="https://www.tno.nl/en/newsroom/2023/04-0/pqc-migration-handbook/">PQC Migration Handbook</a>
-                    compiled by TNO and CWI.</p>
+                <p>April 2023, we published the <a href="https://www.tno.nl/en/newsroom/2023/04-0/pqc-migration-handbook/">PQC Migration Handbook</a>, which assists organisations in mitigating the threat of quantum computers on currently used cryptography, by providing concrete steps and advice. The PQChoiceAssistant is an extension to the PQC Migration Handbook. After the PQC Diagnosis, in which the vulnerable cryptography is identified, the PQChoiceAssistant assists in making the choice of which algorithm(s) to migrate to.
                 <br>
-                <p>With the advent of quantum computers, encryption methods have to change.
-                    Popular options such as RSA are not quantum-safe, and so many users will have to migrate to other schemes
-                    that do protect against the quantum threat. However, it is not always easy to determine what scheme to choose,
-                    as there are multiple options with different strengths and weaknesses relevant to specific applications.</p>
-                <br>
-                <p>All information entered in the PQChoiceAssistant is handled locally and all calculations are done in the browser,
-                    so no information is stored or viewed by other parties.</p>
+                <p>All information entered in the PQChoiceAssistant is handled locally, and all calculations are done in the browser. Therefore, no information is stored or viewed by other parties, so also not by us.</p>
                 <p>For this reason, the tool can also be used offline. You can easily download the website from
                     <a href="https://www.github.com">Github</a> [link TBD].</p>
 
