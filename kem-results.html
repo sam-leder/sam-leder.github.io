@@ -44,20 +44,20 @@
                 <br>
 
                 <p><strong>ML-KEM (module lattice KEM)</strong>,
-                also known as Kyber, is a KEM based on a variant of the learning with errors (LWE) lattice problem. It was introduced in 2018
+                based CRYSTALS-Kyber, is a KEM based on a variant of the learning with errors (LWE) lattice problem. It was introduced in 2018
                 and won the NIST competition for the first PQC standard in 2022. ML-KEM distinguishes itself from alternatives
                 by being fast at encryption, decryption and key generation, while also having small keys.</p>
-                <p>• <u>Strengths:</u> Very efficient, relatively small sizes, simple to implement in hardware</p>
-                <p>• <u>Weaknesses:</u> Somewhat less conservative</p>
+                <p>• <u>Pros:</u> Very efficient, relatively small sizes, simple to implement in hardware</p>
+                <p>• <u>Cons:</u> Somewhat less conservative</p>
                 <br>
 
                 <p><strong>FrodoKEM</strong>,
-                like ML-KEM, is based on the LWE problem. However, it relies on a more general form
+                is also based on the LWE problem. Unlike ML-KEM, it relies on a more general form
                 of the LWE problem. While there is no evidence that the added structure that ML-KEM uses introduces any vulnerabilities,
                 it makes that FrodoKEM is considered a more conservative choice for not having this structure.
-                On the other hand, this makes FrodoKEM a slightly slower scheme.</p>
-                <p>• <u>Strengths:</u> More conservative choice than module lattices</p>
-                <p>• <u>Weaknesses:</u> Smaller session keys, requires more frequent session refreshing.
+                On the other hand, this makes FrodoKEM an overall less efficient scheme.</p>
+                <p>• <u>Pros:</u> More conservative choice than module lattices</p>
+                <p>• <u>Cons:</u> Smaller session keys, requires more frequent session refreshing.
                     Larger sizes and slower performance than module lattices</p>
                 <br>
 
@@ -65,9 +65,9 @@
                 stands out from the two schemes above, as it is not based on lattice problems, but on error-correcting codes.
                 It is also by far the oldest and most mature scheme of the three, being proposed in the 1970s. This makes it also the most conservative
                 option, as no significant vulnerabilities have been found in over 40 years. Conversely, McEliece uses very large keys,
-                which leads to it often being the slowest scheme as well.</p>
-                <p>• <u>Strengths:</u> Very conservative choice, one of the oldest PQC schemes developed, small ciphertexts</p>
-                <p>• <u>Weaknesses:</u> Very large public keys and slow key generation</p>
+                which makes it impractical for many use cases.</p>
+                <p>• <u>Pros:</u> Very conservative choice, one of the oldest PQC schemes developed, small ciphertexts</p>
+                <p>• <u>Cons:</u> Very large public keys and slow key generation</p>
                 <br>
 
                 <br>

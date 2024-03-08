@@ -44,36 +44,36 @@
                 <br>
 
                 <p><strong>ML-DSA (module lattice digital signature algorithm)</strong>,
-                also known as Dilithium, is a signature scheme based on module lattices. It has been selected by NIST
+                based on CRYSTALS-Dilithium, is a signature scheme based on module lattices. It has been selected by NIST
                 for standardization and is recommended as primary algorithm. ML-DSA provides high efficiency in creating
                 signatures as well as generating keys.</p>
-                <p>• <u>Strengths:</u> Fast key generation and signing, relatively small signatures</p>
-                <p>• <u>Weaknesses:</u> Somewhat less conservative approach</p>
+                <p>• <u>Pros:</u> Fast key generation and signing, relatively small signatures</p>
+                <p>• <u>Cons:</u> Somewhat less conservative approach</p>
                 <br>
 
-                <p><strong>Falcon</strong>,
+                <p><strong>Falcon</strong>
                 is quite similar to ML-DSA: it is also based on module lattices and has similar efficiency.
                 NIST also selected Falcon, and recommends it for applications requiring smaller signatures than ML-DSA is able to create.
                 Falcon can also verify signatures faster than ML-DSA.</p>
-                <p>• <u>Strengths:</u> Small sizes and fast verification</p>
-                <p>• <u>Weaknesses:</u> Design makes it difficult to put side-channel countermeasures in place,
+                <p>• <u>Pros:</u> Small sizes and fast verification</p>
+                <p>• <u>Cons:</u> Design makes it difficult to put side-channel countermeasures in place,
                     somewhat less conservative approach</p>
                 <br>
 
                 <p><strong>SLH-DSA (stateless hash-based digital signature algorithm)</strong>,
-                also known as SPHINCS+, is a hash-based signature scheme also selected for standardization by NIST.
+                based on SPHINCS+, is a hash-based signature scheme also selected for standardization by NIST.
                 It stands out by the fact that it has very small public and secret keys, has good hardware integration
                 and is assumed to be very secure, but also is very slow at generating keys, as well as creating and verifying signatures.</p>
-                <p>• <u>Strengths:</u> Established high security, based on simple and strong assumptions, small public key</p>
-                <p>• <u>Weaknesses:</u> Large signatures and slower performance, especially when signing</p>
+                <p>• <u>Pros:</u> High security, based on well-established cryptographic assumptions, small public key</p>
+                <p>• <u>Cons:</u> Large signatures and slower performance, especially for signature generation</p>
                 <br>
 
                 <p><strong>XMSS (extended Merkle signature scheme)</strong>
                 is also a hash-based signature scheme. It is the only stateful scheme out of these four, meaning a state has to be maintained
                 between operations. This is undesirable in many applications. On the other hand, XMSS does offer efficient operations and strong security.
-                NIST has published a recommendation for XMSS based on an IETF RFC.</p>
-                <p>• <u>Strengths:</u> Strong security, size relatively small, fast verification</p>
-                <p>• <u>Weaknesses:</u> State is hard to handle, reducing applicability drastically</p>
+                NIST has published a recommendation for XMSS based on IETF RFC 8391.</p>
+                <p>• <u>Pros:</u> Strong security, size relatively small, fast verification</p>
+                <p>• <u>Cons:</u> State is hard to handle, limited number of signatures, reducing applicability significantly</p>
                 <br>
 
                 <br>
