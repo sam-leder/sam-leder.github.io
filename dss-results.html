@@ -43,7 +43,7 @@
                 <h3>Brief descriptions of the schemes</h3>
                 <br>
 
-                <p><strong>ML-DSA</strong>,
+                <p><strong>ML-DSA (module lattice digital signature algorithm)</strong>,
                 also known as Dilithium, is a signature scheme based on module lattices. It has been selected by NIST
                 for standardization and is recommended as primary algorithm. ML-DSA provides high efficiency in creating
                 signatures as well as generating keys.</p>
@@ -60,7 +60,7 @@
                     somewhat less conservative approach</p>
                 <br>
 
-                <p><strong>SL-DSA</strong>,
+                <p><strong>SLH-DSA (stateless hash-based digital signature algorithm)</strong>,
                 also known as SPHINCS+, is a hash-based signature scheme also selected for standardization by NIST.
                 It stands out by the fact that it has very small public and secret keys, has good hardware integration
                 and is assumed to be very secure, but also is very slow at generating keys, as well as creating and verifying signatures.</p>
@@ -68,10 +68,10 @@
                 <p>• <u>Weaknesses:</u> Large signatures and slower performance, especially when signing</p>
                 <br>
 
-                <p><strong>XMSS</strong>
+                <p><strong>XMSS (extended Merkle signature scheme)</strong>
                 is also a hash-based signature scheme. It is the only stateful scheme out of these four, meaning a state has to be maintained
                 between operations. This is undesirable in many applications. On the other hand, XMSS does offer efficient operations and strong security.
-                XMSS is not in the process of being standardized, but NIST has published a recommendation for it.</p>
+                NIST has published a recommendation for XMSS based on an IETF RFC.</p>
                 <p>• <u>Strengths:</u> Strong security, size relatively small, fast verification</p>
                 <p>• <u>Weaknesses:</u> State is hard to handle, reducing applicability drastically</p>
                 <br>

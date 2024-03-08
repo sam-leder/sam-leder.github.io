@@ -43,12 +43,12 @@
                 <h3>Brief descriptions of the schemes</h3>
                 <br>
 
-                <p><strong>ML-KEM</strong>,
+                <p><strong>ML-KEM (module lattice KEM)</strong>,
                 also known as Kyber, is a KEM based on a variant of the learning with errors (LWE) lattice problem. It was introduced in 2018
                 and won the NIST competition for the first PQC standard in 2022. ML-KEM distinguishes itself from alternatives
                 by being fast at encryption, decryption and key generation, while also having small keys.</p>
                 <p>• <u>Strengths:</u> Very efficient, relatively small sizes, simple to implement in hardware</p>
-                <p>• <u>Weaknesses:</u> Somewhat less mature</p>
+                <p>• <u>Weaknesses:</u> Somewhat less conservative</p>
                 <br>
 
                 <p><strong>FrodoKEM</strong>,
@@ -61,12 +61,12 @@
                     Larger sizes and slower performance than module lattices</p>
                 <br>
 
-                <p><strong>McEliece</strong>
+                <p><strong>Classic McEliece</strong>
                 stands out from the two schemes above, as it is not based on lattice problems, but on error-correcting codes.
                 It is also by far the oldest and most mature scheme of the three, being proposed in the 1970s. This makes it also the most conservative
                 option, as no significant vulnerabilities have been found in over 40 years. Conversely, McEliece uses very large keys,
                 which leads to it often being the slowest scheme as well.</p>
-                <p>• <u>Strengths:</u> Very conservative choice, one of the oldest PQC schemes developed, fairly efficient, small ciphertexts</p>
+                <p>• <u>Strengths:</u> Very conservative choice, one of the oldest PQC schemes developed, small ciphertexts</p>
                 <p>• <u>Weaknesses:</u> Very large public keys and slow key generation</p>
                 <br>
 
