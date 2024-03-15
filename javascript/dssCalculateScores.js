@@ -276,34 +276,34 @@ function question3() {
 
         switch (sessionStorage.getItem('q3-1')) {
             case 'Completely agree':
-                scores3.mldsa   = 1;
-                scores3.falcon      = 1;
+                scores3.mldsa   = 0;
+                scores3.falcon      = 0;
                 scores3.slhdsa     = 5;
                 scores3.xmss        = 5;
                 break;
             case 'Agree':
-                scores3.mldsa   = 2;
-                scores3.falcon      = 2;
+                scores3.mldsa   = 0;
+                scores3.falcon      = 0;
                 scores3.slhdsa     = 4;
                 scores3.xmss        = 4;
                 break;
             case 'Neutral':
-                scores3.mldsa   = 3;
-                scores3.falcon      = 3;
-                scores3.slhdsa     = 3;
-                scores3.xmss        = 3;
+                scores3.mldsa   = 0;
+                scores3.falcon      = 0;
+                scores3.slhdsa     = 0;
+                scores3.xmss        = 0;
                 break;
             case 'Disagree':
                 scores3.mldsa   = 4;
                 scores3.falcon      = 4;
-                scores3.slhdsa     = 2;
-                scores3.xmss        = 2;
+                scores3.slhdsa     = 0;
+                scores3.xmss        = 0;
                 break;
             case 'Completely disagree':
                 scores3.mldsa   = 5;
                 scores3.falcon      = 5;
-                scores3.slhdsa     = 1;
-                scores3.xmss        = 1;
+                scores3.slhdsa     = 0;
+                scores3.xmss        = 0;
                 break;
             default:
                 scores3.mldsa   = 0;
@@ -344,34 +344,34 @@ function question3() {
         // Use answer of Question 3
         switch (sessionStorage.getItem('q3')) {
             case 'Completely agree':
-                scores3.mldsa   = 1;
-                scores3.falcon      = 1;
+                scores3.mldsa   = 0;
+                scores3.falcon      = 0;
                 scores3.slhdsa     = 5;
                 scores3.xmss        = 5;
                 break;
             case 'Agree':
-                scores3.mldsa   = 2;
-                scores3.falcon      = 2;
+                scores3.mldsa   = 0;
+                scores3.falcon      = 0;
                 scores3.slhdsa     = 4;
                 scores3.xmss        = 4;
                 break;
             case 'Neutral':
-                scores3.mldsa   = 3;
-                scores3.falcon      = 3;
-                scores3.slhdsa     = 3;
-                scores3.xmss        = 3;
+                scores3.mldsa   = 0;
+                scores3.falcon      = 0;
+                scores3.slhdsa     = 0;
+                scores3.xmss        = 0;
                 break;
             case 'Disagree':
                 scores3.mldsa   = 4;
                 scores3.falcon      = 4;
-                scores3.slhdsa     = 2;
-                scores3.xmss        = 2;
+                scores3.slhdsa     = 0;
+                scores3.xmss        = 0;
                 break;
             case 'Completely disagree':
                 scores3.mldsa   = 5;
                 scores3.falcon      = 5;
-                scores3.slhdsa     = 1;
-                scores3.xmss        = 1;
+                scores3.slhdsa     = 0;
+                scores3.xmss        = 0;
                 break;
             default:
                 scores3.mldsa   = 0;
@@ -1066,11 +1066,12 @@ function adviceSecurityLevel() {
 }
 
 const div = document.getElementById("form-wrapper");
-div.innerHTML += '<p>You answered as follows:</p>';
+div.innerHTML += '<p>You answered as follows:</p><br>';
 
-questions.forEach((question, index) => {
+questions.forEach(question => {
     let answer = sessionStorage.getItem(question.name);
-    div.innerHTML += `<p>Question ${question.name.slice(1)}: ${answer ? answer : "Not answered"}</p>`;
+    div.innerHTML += `<p><strong>Question ${question.name.slice(1)}:</strong> ${question.prompt} <strong>
+        ${answer && answer != -1 ? answer + (question.type == "slider" ? " " + question.options[3] : "") : "Not answered"}</strong></p><br>`;
 });
 
 let scores = calculateScores();
@@ -1096,6 +1097,6 @@ if (sessionStorage.getItem('q2 (Follow-up)') == 'Yes') {
 }
 
 // Print advice based on answer of question 3-2
-if (sessionStorage.getItem('q3-2')) {
+if (sessionStorage.getItem('q3-2') && sessionStorage.getItem('q3-2') !== "Don't know") {
     div.innerHTML += `<br><p>PQC algorithms with the same security level as your answer to question 3-2 would be ${adviceSecurityLevel()}.</p>`;
 }

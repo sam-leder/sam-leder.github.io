@@ -235,29 +235,29 @@ function question3() {
 
         switch (sessionStorage.getItem('q3-1')) {
             case 'Completely agree':
-                scores3.mlkem      = 1;
-                scores3.frodokem   = 5;
+                scores3.mlkem      = 0;
+                scores3.frodokem   = 4;
                 scores3.mceliece   = 5;
                 break;
             case 'Agree':
-                scores3.mlkem      = 2;
-                scores3.frodokem   = 4;
+                scores3.mlkem      = 0;
+                scores3.frodokem   = 3;
                 scores3.mceliece   = 4;
                 break;
             case 'Neutral':
-                scores3.mlkem      = 3;
-                scores3.frodokem   = 3;
-                scores3.mceliece   = 3;
+                scores3.mlkem      = 0;
+                scores3.frodokem   = 0;
+                scores3.mceliece   = 0;
                 break;
             case 'Disagree':
                 scores3.mlkem      = 4;
-                scores3.frodokem   = 2;
-                scores3.mceliece   = 2;
+                scores3.frodokem   = 0;
+                scores3.mceliece   = 0;
                 break;
             case 'Completely disagree':
                 scores3.mlkem      = 5;
-                scores3.frodokem   = 1;
-                scores3.mceliece   = 5;
+                scores3.frodokem   = 0;
+                scores3.mceliece   = 0;
                 break;
             default:
                 scores3.mlkem      = 0;
@@ -293,29 +293,29 @@ function question3() {
         // Use answer of Question 3
         switch (sessionStorage.getItem('q3')) {
             case 'Completely agree':
-                scores3.mlkem      = 5;
-                scores3.frodokem   = 1;
+                scores3.mlkem      = 0;
+                scores3.frodokem   = 4;
                 scores3.mceliece   = 5;
                 break;
             case 'Agree':
-                scores3.mlkem      = 4;
-                scores3.frodokem   = 2;
+                scores3.mlkem      = 0;
+                scores3.frodokem   = 3;
                 scores3.mceliece   = 4;
                 break;
             case 'Neutral':
-                scores3.mlkem      = 3;
-                scores3.frodokem   = 3;
-                scores3.mceliece   = 3;
+                scores3.mlkem      = 0;
+                scores3.frodokem   = 0;
+                scores3.mceliece   = 0;
                 break;
             case 'Disagree':
-                scores3.mlkem      = 2;
-                scores3.frodokem   = 4;
-                scores3.mceliece   = 2;
+                scores3.mlkem      = 4;
+                scores3.frodokem   = 0;
+                scores3.mceliece   = 0;
                 break;
             case 'Completely disagree':
-                scores3.mlkem      = 1;
-                scores3.frodokem   = 5;
-                scores3.mceliece   = 1;
+                scores3.mlkem      = 5;
+                scores3.frodokem   = 0;
+                scores3.mceliece   = 0;
                 break;
             default:
                 scores3.mlkem      = 0;
@@ -838,11 +838,12 @@ function adviceSecurityLevel() {
 }
 
 const div = document.getElementById("form-wrapper");
-div.innerHTML += '<p>You answered as follows:</p>';
+div.innerHTML += '<p>You answered as follows:</p><br>';
 
-questions.forEach((question, index) => {
+questions.forEach(question => {
     let answer = sessionStorage.getItem(question.name);
-    div.innerHTML += `<p>Question ${question.name.slice(1)}: ${answer ? answer : "Not answered"}</p>`;
+    div.innerHTML += `<p><strong>Question ${question.name.slice(1)}:</strong> ${question.prompt} <strong>
+        ${answer && answer != -1 ? answer + (question.type == "slider" ? " " + question.options[3] : "") : "Not answered"}</strong></p><br>`;
 });
 
 let scores = calculateScores();
@@ -864,6 +865,6 @@ if (sessionStorage.getItem('q2 (Follow-up)') == 'Yes') {
 }
 
 // Print advice based on answer of question 3-2
-if (sessionStorage.getItem('q3-2')) {
+if (sessionStorage.getItem('q3-2') && sessionStorage.getItem('q3-2') !== "Don't know") {
     div.innerHTML += `<br><p>⚠️ Note: PQC algorithms with the same security level as your answer to question 3-2 would be ${adviceSecurityLevel()}.</p>`;
 }
