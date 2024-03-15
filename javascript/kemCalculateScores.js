@@ -448,7 +448,6 @@ function question5() {
 }
 
 function question6() {
-    console.log(sessionStorage.getItem('q6'));
     switch (sessionStorage.getItem('q6')) {
         case 'Completely agree':
             return {mlkem: 5, frodokem: 5, mceliece: 5};
@@ -735,7 +734,6 @@ function calculateScores() {
 
     // Question 2
     let scores2 = question2();
-    console.log(" ", scores2)
     let factor = 1;
     if (sessionStorage.getItem('q9').includes('Question 2: Timespan') || sessionStorage.getItem('q9').includes('Question 2 (Follow-up): Classified information')) {
         factor = 2;
